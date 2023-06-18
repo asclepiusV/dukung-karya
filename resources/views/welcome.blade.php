@@ -12,7 +12,7 @@
 <body>
     @include ('partials.navbar')
     <div class="jumbotron text-center">
-        <h1 class="display-4">Welcome to Kickstarter</h1>
+        <h1 class="display-4">Selamat datang di Dukung Karya</h1>
         <p class="lead">Explore amazing projects and bring them to life.</p>
         <a class="btn btn-primary btn-lg" href="#" role="button">Get Started</a>
     </div>

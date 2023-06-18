@@ -97,5 +97,27 @@ Route::get('/register', function () {
 });
 
 Route::get('/lists', function () {
-    return view('campaign/listing');
+    // Dummy project data (replace with actual data from the database)
+    $projects = [
+        [
+            "project_name" => "Permainan",
+            "slug" => "permainan-1",
+            "project_description" => "Ini adala proyek permainan"
+        ],
+        [
+            "project_name" => "Karya",
+            "slug" => "karya-1",
+            "project_description" => "Ini adala proyek karya"
+        ],
+        [
+            "project_name" => "Musik",
+            "slug" => "musik-1",
+            "project_description" => "Ini adala proyek musik"
+        ] 
+        // Add more project arrays as needed
+    ];
+    return view('campaign/listing', [
+        "title" => "A Project",
+        "project" => $projects 
+    ]);
 });

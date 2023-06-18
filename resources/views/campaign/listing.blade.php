@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,40 +11,26 @@
 
 <body>
 @include ('partials.navbar')
-    <div class="container">
-        <h1 class="mt-5">Kickstarter Home</h1>
-        <div class="row mt-4">
-            <?php
-      // Dummy project data (replace with actual data from the database)
-      $projects = [
-        [
-          'name' => 'Project 1',
-          'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-          'imageUrl' => 'project1.jpg',
-        ],
-        [
-          'name' => 'Project 2',
-          'description' => 'Nulla convallis ipsum eget mi efficitur, sit amet luctus lacus pulvinar.',
-          'imageUrl' => 'project2.jpg',
-        ],
-        // Add more project arrays as needed
-      ];
-
-      // Generate project cards dynamically
-      foreach ($projects as $project) {
-        echo '<div class="col-md-4 mb-4">';
-        echo '<div class="card">';
-        echo '<img src="' . $project['imageUrl'] . '" class="card-img-top" alt="Project Image">';
-        echo '<div class="card-body">';
-        echo '<h5 class="card-title">' . $project['name'] . '</h5>';
-        echo '<p class="card-text">' . $project['description'] . '</p>';
-        echo '<a href="#" class="btn btn-primary">Support</a>';
-        echo '</div>';
-        echo '</div>';
-        echo '</div>';
-      }
-      ?>
+  <div class="container">
+      <h1 class="mt-5">Kickstarter Home</h1>
+        
+            
+      @foreach (array_chunk($project, 3) as $chunk)
+      <div class="row mb-5">
+        @foreach ($chunk as $item)
+        <div class="col-md-4">
+          <div class="card">
+            <img src="projek.jpg" class="card-img-top" alt="Project Image">
+            <div class="card-body">
+              <h5 class="card-title">{{ $item['project_name'] }}</h5>
+              <p class="card-text">{{ $item['project_description'] }}</p>
+              <a href="#" class="btn btn-primary">Support</a>
+            </div>
+          </div>
         </div>
+        @endforeach
+      </div>
+      @endforeach
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
