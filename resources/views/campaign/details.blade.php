@@ -10,7 +10,6 @@
 
 <body>
 @include ('partials.navbar')
-
     <div class="container">
         <h1 class="mt-5">{{ $project["project_name"] }}</h1>
         <div class="row mt-4">
