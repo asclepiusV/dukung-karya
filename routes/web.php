@@ -29,7 +29,22 @@ Route::get('/', function () {
             "project_name" => "Musik",
             "slug" => "musik-1",
             "project_description" => "Ini adala proyek musik"
-        ]        
+        ],
+        [
+            "project_name" => "Permainan",
+            "slug" => "permainan-2",
+            "project_description" => "Ini adala proyek permainan"
+        ],
+        [
+            "project_name" => "Karya",
+            "slug" => "karya-2",
+            "project_description" => "Ini adala proyek karya"
+        ],
+        [
+            "project_name" => "Musik",
+            "slug" => "musik-2",
+            "project_description" => "Ini adala proyek musik"
+        ]
     ];
     return view('welcome', [
         "project" => $projects
@@ -54,19 +69,21 @@ Route::get('/projects/{slug}', function ($slug) {
             "project_name" => "Musik",
             "slug" => "musik-1",
             "project_description" => "Ini adala proyek musik"
-        ]        
+        ],
+
+
     ];
 
 
     $new_project = [];
-    foreach($projects as $item) {
-    if($item["slug"] === $slug )
-    $new_project = $item;
+    foreach ($projects as $item) {
+        if ($item["slug"] === $slug)
+            $new_project = $item;
     }
-    
+
     return view('campaign/details', [
         "title" => "A Project",
-        "project" => $new_project 
+        "project" => $new_project
     ]);
 });
 
