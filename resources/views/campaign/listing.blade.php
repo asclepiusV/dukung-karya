@@ -24,7 +24,7 @@
             <div class="card-body">
               <h5 class="card-title">{{ $item['project_name'] }}</h5>
               <p class="card-text">{{ $item['project_description'] }}</p>
-              <a href="#" class="btn btn-primary">Support</a>
+              <a href="/projects/{{ $item["slug"] }}" class="btn btn-primary">Support</a>
             </div>
           </div>
         </div>
