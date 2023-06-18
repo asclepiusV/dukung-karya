@@ -62,7 +62,8 @@ Route::get('/projects/{slug}', function ($slug) {
     foreach($projects as $item) {
     if($item["slug"] === $slug )
     $new_project = $item;
-}
+    }
+    
     return view('campaign/details', [
         "title" => "A Project",
         "project" => $new_project 
@@ -76,4 +77,8 @@ Route::get('/login', function () {
 
 Route::get('/register', function () {
     return view('auth/register');
+});
+
+Route::get('/lists', function () {
+    return view('campaign/listing');
 });
