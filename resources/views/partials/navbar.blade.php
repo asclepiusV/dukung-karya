@@ -11,7 +11,7 @@
                         <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/lists">Explore</a>
+                        <a class="nav-link" href="/lists">List Proyek</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Start a Project</a>

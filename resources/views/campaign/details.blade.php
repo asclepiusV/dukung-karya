@@ -14,7 +14,7 @@
         <h1 class="mt-5">{{ $project["project_name"] }}</h1>
         <div class="row mt-4">
             <div class="col-md-6">
-                <img src="project-image.jpg" class="img-fluid" alt="Project Image">
+                <img src="{{ $project['project_image'] }}" class="card-img-top" alt="Project Image">
             </div>
             <div class="col-md-6">
                 <h5>Deskripsi Proyek</h5>

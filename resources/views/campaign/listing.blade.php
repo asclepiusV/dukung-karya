@@ -7,20 +7,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kickstarter Home</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+      .image{
+          width: 100%;
+          height: 200px;
+          object-fit: cover;
+          object-position: 100% 8%;
+      }
+  </style>
 </head>
 
 <body>
 @include ('partials.navbar')
   <div class="container">
       <h1 class="mt-5">Kickstarter Home</h1>
-        
             
       @foreach (array_chunk($project, 3) as $chunk)
       <div class="row mb-5">
         @foreach ($chunk as $item)
         <div class="col-md-4">
           <div class="card">
-            <img src="projek.jpg" class="card-img-top" alt="Project Image">
+            <img src="{{ $item['project_image'] }}" class="card-img-top image" alt="Project Image">
             <div class="card-body">
               <h5 class="card-title">{{ $item['project_name'] }}</h5>
               <p class="card-text">{{ $item['project_description'] }}</p>
