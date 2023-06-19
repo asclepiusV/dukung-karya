@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id('project_id');
             $table->string('project_name');
-            $table->string('slug')->unique();
-            $table->foreignId('creator_id')->references('user_id')->on('users');
+            $table->string('slug')->unique()->nullable();
+            $table->foreignId('creator_id')->nullable()->references('user_id')->on('users');
             $table->foreignId('category_id')->references('category_id')->on('categories');
             $table->text('description')->nullable();
             $table->char('funding_goal', 30)->nullable();

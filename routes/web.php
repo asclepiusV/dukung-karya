@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Project;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,11 +22,11 @@ Route::get('/register', function () {
     return view('auth/register');
 });
 
-Route::get('/', [Project::class, 'index']);
+Route::get('/', [ProjectController::class, 'index']);
 
-Route::get('/projects/{slug}', [Project::class, 'detailProject']);
+Route::get('/projects/{slug}', [ProjectController::class, 'detailProject']);
 
-Route::get('/lists', [Project::class, 'listProject']);
+Route::get('/lists', [ProjectController::class, 'listProject']);
 
 Route::get('/projects/{slug}/payment', function ($slug) {
     $projects = [
@@ -80,3 +80,8 @@ Route::get('/projects/{slug}/payment', function ($slug) {
         "project" => $new_project
     ]);
 });
+
+Route::get('/start', [ProjectController::class, 'startProject']);
+Route::post('/start', [ProjectController::class, 'createProject']);
+
+Route::get('/start/checkSlug', [ProjectController::class, 'checkSlug']);

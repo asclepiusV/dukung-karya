@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
 use Illuminate\Http\Request;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
-class Project extends Controller
+class ProjectController extends Controller  
 {
     use AuthorizesRequests, ValidatesRequests;
 
@@ -53,6 +55,16 @@ class Project extends Controller
         return view('welcome', [
             "project" => $projects
         ]);
+    }
+
+    public function startProject()
+    {
+        return view('/form/mainForm');
+    }
+
+    public function createProject()
+    {
+        
     }
 
     public function detailProject($slug)
@@ -154,5 +166,11 @@ class Project extends Controller
             "title" => "A Project",
             "project" => $projects
         ]);
+    }
+
+    public function checkSlug(Request $request)
+    {
+        $slug = SlugService::createSlug(Project::class, 'slug', $request->title);
+        return response()->json(['slug' => $slug]);
     }
 }

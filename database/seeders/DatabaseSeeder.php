@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Project;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,9 +24,14 @@ class DatabaseSeeder extends Seeder
             'creator_id' => '21',
         ]);
 
-        \App\Models\Category::create([
+        Category::create([
             'name' => 'Teknologi',
             'slug' => 'teknologi'
+        ]);
+
+        $project = Project::create([
+            'project_name' => 'Test User',
+            'category_id' => 1
         ]);
     }
 }
