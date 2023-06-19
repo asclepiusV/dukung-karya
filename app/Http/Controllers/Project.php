@@ -103,7 +103,7 @@ class Project extends Controller
                 $new_project = $item;
         }
     
-        return view('campaign/details', [
+        return view('campaign/detail', [
             "title" => "A Project",
             "project" => $new_project
         ]);
