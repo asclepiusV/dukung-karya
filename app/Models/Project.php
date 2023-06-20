@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Backer;
 use App\Models\Reward;
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -45,5 +46,11 @@ class Project extends Model
                 'source' => 'project_name'
             ]
         ];
+    }
+
+    public function setTitleAttribute($value)
+    {
+        $this->attributes['project_name'] = $value;
+        $this->attributes['slug'] = Str::slug($value);
     }
 }

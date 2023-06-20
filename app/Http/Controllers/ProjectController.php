@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -62,9 +64,68 @@ class ProjectController extends Controller
         return view('/form/mainForm');
     }
 
-    public function createProject()
+    public function createProject(Request $request)
     {
-        
+        $projectName = $request->title;
+        $slug = Str::slug($projectName);
+        $projectCategory =  $request->projectCategory;
+        $projectDesc = $request->projectDesc;
+        $projectGoal = $request->projectGoal;
+        $starDate = $request->start_date;
+        $endDate = $request->end_date;
+
+        Project::create([
+            'project_name' => $projectName,
+            'slug' => $slug,
+            'category_id' => $projectCategory,
+            'description' => $projectDesc,
+            'funding_goal' => $projectGoal,
+            'start_date' => $starDate,
+            'end_date' => $endDate
+        ]);
+
+        $projects = [
+            [
+                "project_name" => "Tools Up",
+                "slug" => "permainan-1",
+                "project_description" => "Ini adala proyek permainan",
+                "project_image" => "asset/image/toolsUp.jpg"
+            ],
+            [
+                "project_name" => "Karya",
+                "slug" => "karya-1",
+                "project_description" => "Ini adala proyek karya",
+                "project_image" => "asset/image/karya1.jpeg"
+            ],
+            [
+                "project_name" => "Musik",
+                "slug" => "musik-1",
+                "project_description" => "Ini adala proyek musik",
+                "project_image" => "asset/image/music1.jpg"
+            ],
+            [
+                "project_name" => "Walking Dead",
+                "slug" => "permainan-2",
+                "project_description" => "Ini adala proyek permainan",
+                "project_image" => "asset/image/walkingDead.jpg"
+            ],
+            [
+                "project_name" => "Karya",
+                "slug" => "karya-2",
+                "project_description" => "Ini adala proyek karya",
+                "project_image" => "asset/image/karya2.jpg"
+            ],
+            [
+                "project_name" => "Musik",
+                "slug" => "musik-2",
+                "project_description" => "Ini adala proyek musik",
+                "project_image" => "asset/image/music2.jpg"
+            ]
+        ];
+
+        return view('welcome', [
+            "project" => $projects
+        ]);
     }
 
     public function detailProject($slug)
