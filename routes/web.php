@@ -82,6 +82,6 @@ Route::get('/projects/{slug}/payment', function ($slug) {
 });
 
 Route::get('/start', [ProjectController::class, 'startProject']);
-Route::post('/start', [ProjectController::class, 'createProject']);
+Route::post('/', [ProjectController::class, 'createProject']);
 
 Route::get('/start/checkSlug', [ProjectController::class, 'checkSlug']);

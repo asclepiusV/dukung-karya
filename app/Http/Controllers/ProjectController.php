@@ -16,6 +16,8 @@ class ProjectController extends Controller
 
     public function index()
     {
+        $data = Project::get();
+
         $projects = [
             [
                 "project_name" => "Tools Up",
@@ -54,8 +56,9 @@ class ProjectController extends Controller
                 "project_image" => "asset/image/music2.jpg"
             ]
         ];
+        
         return view('welcome', [
-            "project" => $projects
+            "project" => $data
         ]);
     }
 
@@ -71,8 +74,8 @@ class ProjectController extends Controller
         $projectCategory =  $request->projectCategory;
         $projectDesc = $request->projectDesc;
         $projectGoal = $request->projectGoal;
-        $starDate = $request->start_date;
-        $endDate = $request->end_date;
+        $duration = $request->duration;
+        $imgProject = $request->imgProject;
 
         Project::create([
             'project_name' => $projectName,
@@ -80,8 +83,8 @@ class ProjectController extends Controller
             'category_id' => $projectCategory,
             'description' => $projectDesc,
             'funding_goal' => $projectGoal,
-            'start_date' => $starDate,
-            'end_date' => $endDate
+            'duration_fund' => $duration,
+            'img_project' => base64_encode(file_get_contents($imgProject)),
         ]);
 
         $projects = [

@@ -20,9 +20,9 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->char('funding_goal', 30)->nullable();
             $table->char('current_funding', 30)->nullable();
-            $table->date('start_date')->nullable();
-            $table->date('end_date')->nullable();
+            $table->char('duration_fund')->nullable();
             $table->boolean('is_validated')->default(false);
+            $table->binary('img_project')->nullable();
             $table->timestamps();
         });
     }

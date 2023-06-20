@@ -14,7 +14,7 @@
                         <a class="nav-link" href="/lists">List Proyek</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Start a Project</a>
+                        <a class="nav-link" href="/start">Start a Project</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/login">Login</a>

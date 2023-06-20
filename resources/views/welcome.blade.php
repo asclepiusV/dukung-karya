@@ -27,12 +27,12 @@
 
 
     <div class="container">
-        @foreach (array_chunk($project, 3) as $chunk)
+        {{-- @foreach (array_chunk($project, 3) as $chunk) --}}
         <div class="row mb-5">
-            @foreach ($chunk as $item)
+            @foreach ($project as $item)
             <div class="col-md-4">
                 <div class="card">
-                    <img src="{{ $item['project_image'] }}" class="card-img-top image" alt="Project Image">
+                    <img src="/asset/image/karya2.jpg" class="card-img-top image" alt="Project Image">
                     <div class="card-body">
                         <h5 class="card-title">{{ $item["project_name"] }}</h5>
                         <p class="card-text">{{ $item["project_description"] }}</p>
@@ -42,7 +42,7 @@
             </div>
             @endforeach
         </div>
-        @endforeach
+        {{-- @endforeach --}}
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
