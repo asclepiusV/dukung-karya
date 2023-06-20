@@ -32,7 +32,7 @@
             @foreach (session('projects') as $item)
             <div class="col-md-4">
                 <div class="card">
-                    <img src=">{{ $item["project_image"] }}<" class="card-img-top image" alt="Project Image">
+                    <img src="{{ $item["project_image"] }}" class="card-img-top image" alt="Project Image">
                     <div class="card-body">
                         <h5 class="card-title">{{ $item["project_name"] }}</h5>
                         <p class="card-text">{{ $item["project_description"] }}</p>
