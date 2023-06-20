@@ -26,15 +26,16 @@
                         <form action="/login" method="POST">
                             @csrf
                             <div class="form-group">
-                                <label for="username">Username/Email</label>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter username/email">
+                                <label for="username">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
                                 <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
                             </div>
-                            <button type="submit" class="btn btn-primary">Login</button>
+                            <button type="submit" class="btn btn-primary w-100">Login</button>
                         </form>
+                        <small class="d-block text-center mt-3">Not registered? <a href="register">Register Now!</a></small>
                     </div>
                 </div>
             </div>
