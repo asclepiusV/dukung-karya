@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Backer;
 use App\Models\Project;
+use Dotenv\Repository\Adapter\GuardedWriter;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -20,11 +21,13 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'username',
-        'email',
-        'password',
-    ];
+   // protected $fillable = [
+   //     'username',
+   //     'email',
+   //     'password',
+   // ];
+
+   protected $guarded = ['id'];
 
     /**
      * The attributes that should be hidden for serialization.

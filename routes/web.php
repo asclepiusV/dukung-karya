@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\RegisterController;
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,11 +17,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Login
+Route::get('/login', [LoginController::class, 'index'])->name('login')->Middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout']);
 
 
-Route::get('/register', function () {
-    return view('auth/register');
-});
+Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/', [ProjectController::class, 'index']);
 
@@ -80,11 +85,8 @@ Route::get('/projects/{slug}/payment', function ($slug) {
     ]);
 });
 
-Route::get('/start', [ProjectController::class, 'startProject']);
-Route::post('/', [ProjectController::class, 'createProject']);
+Route::get('/start', [ProjectController::class, 'startProject'])->Middleware('auth');
+Route::post('/', [ProjectController::class, 'createProject'])->Middleware('auth');
 
 Route::get('/start/checkSlug', [ProjectController::class, 'checkSlug']);
 
-//Login
-Route::get('/login', [LoginController::class, 'index']);
-Route::post('/login', [LoginController::class, 'authenticate']);

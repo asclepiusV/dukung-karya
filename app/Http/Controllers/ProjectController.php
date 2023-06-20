@@ -16,7 +16,7 @@ class ProjectController extends Controller
 
     public function index()
     {
-        $data = Project::get();
+        $data = Project::get()->toArray();
 
         $projects = [
             [
@@ -57,8 +57,8 @@ class ProjectController extends Controller
             ]
         ];
 
-        return view('welcome', [
-            "project" => $data
+        return View('welcome', [
+            "project" => $projects
         ]);
     }
 
@@ -127,7 +127,7 @@ class ProjectController extends Controller
         ];
 
         return view('welcome', [
-            "project" => $projects
+            "project" => $projects->latest()
         ]);
     }
 

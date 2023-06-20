@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
             'password' => '1234'
         ]);
 
-        \App\Models\Project::create([
+        Project::create([
             'project_name' => 'Test User',
             'slug' => 'test-user',
             'category_id' => '1',

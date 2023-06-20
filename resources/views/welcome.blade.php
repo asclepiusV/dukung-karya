@@ -27,6 +27,7 @@
 
 
     <div class="container">
+        @foreach (array_chunk($project, 3) as $project)
         <div class="row mb-5">
             @foreach ($project as $item)
             <div class="col-md-4">
@@ -41,7 +42,7 @@
             </div>
             @endforeach
         </div>
-        
+        @endforeach
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
