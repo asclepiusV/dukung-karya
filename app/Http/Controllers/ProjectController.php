@@ -10,7 +10,7 @@ use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
-class ProjectController extends Controller  
+class ProjectController extends Controller
 {
     use AuthorizesRequests, ValidatesRequests;
 
@@ -56,7 +56,7 @@ class ProjectController extends Controller
                 "project_image" => "asset/image/music2.jpg"
             ]
         ];
-        
+
         return view('welcome', [
             "project" => $data
         ]);
@@ -71,7 +71,7 @@ class ProjectController extends Controller
     {
         $projectName = $request->title;
         $slug = Str::slug($projectName);
-        $projectCategory =  $request->projectCategory;
+        $projectCategory = $request->projectCategory;
         $projectDesc = $request->projectDesc;
         $projectGoal = $request->projectGoal;
         $duration = $request->duration;
@@ -171,14 +171,14 @@ class ProjectController extends Controller
                 "project_image" => "asset/image/music2.jpg"
             ]
         ];
-    
-    
+
+
         $new_project = [];
         foreach ($projects as $item) {
             if ($item["slug"] === $slug)
                 $new_project = $item;
         }
-    
+
         return view('campaign/detail', [
             "title" => "A Project",
             "project" => $new_project
@@ -237,4 +237,5 @@ class ProjectController extends Controller
         $slug = SlugService::createSlug(Project::class, 'slug', $request->title);
         return response()->json(['slug' => $slug]);
     }
+
 }
