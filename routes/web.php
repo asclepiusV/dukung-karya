@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,9 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/login', function () {
-    return view('auth/login');
-});
+
 
 Route::get('/register', function () {
     return view('auth/register');
@@ -85,3 +84,7 @@ Route::get('/start', [ProjectController::class, 'startProject']);
 Route::post('/', [ProjectController::class, 'createProject']);
 
 Route::get('/start/checkSlug', [ProjectController::class, 'checkSlug']);
+
+//Login
+Route::get('/login', [LoginController::class, 'index']);
+Route::post('/login', [LoginController::class, 'authenticate']);
