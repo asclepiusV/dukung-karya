@@ -48,7 +48,7 @@
                             <input type="number" class="form-control" id="duration" name="duration" placeholder="Masukkan durasi kampanye">
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary w-100">Mulai Proyek</button>
+                            <button type="submit" class="btn btn-success w-100">Mulai Proyek</button>
                         </div>
                     </form>
                 </div>

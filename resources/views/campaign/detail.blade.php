@@ -1,16 +1,69 @@
-@extends('partials.main')
-@section('container')
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+  <head><script src="/js/color-modes.js"></script>
 
-<main class="container">
-  <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis">
-    <div class="col-lg-6 px-0">
-      <h1 class="display-4 fst-italic">{{$project['project_name']}}</h1>
-      <p class="lead my-3">{{$project['project_description']}}</p>
-    </div>
-  </div>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.112.5">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <title>Blog Template · Bootstrap v5.3</title>
 
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/blog/">
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .img-blog{
+        width: 100px;
+        height: 100px;
+        object-fit:cover;
+      }
+      .img-detail {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+      }
+      .img-div {
+        width: 650px;
+        height: 350px;
+      }
+      .justify-text {
+        text-align: justify;
+      }
+      .margin-top{
+        margin-top: 60px;
+      }
+      .indent-if-multiple-lines {
+        text-indent: 0; /* Menghapus inden awal secara default */
+        white-space: nowrap; /* Mencegah pemisahan kata */
+      }
+
+      .indent-if-multiple-lines::first-line {
+        text-indent: 1.5em; /* Inden jika ada lebih dari satu baris */
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/css/blog.css" rel="stylesheet">
+  </head>
+<body>
+
+@extends ('partials.main')
+
+@section ('container')
+<main class="container margin-top">
   <div class="row g-5">
     <div class="col-md-8">
+      <h1 class="mb-5 display-4 fst-italic">{{$project['project_name']}}</h1>
+
+      <!-- <p class="lead my-3">{{$project['project_description']}}</p> -->
       <h3 class="pb-4 mb-4 fst-italic border-bottom">
         By: {{ $project->user->fullname }} <!-- ini nanti nama perusahaan atau kelompok -->
       </h3>
@@ -21,18 +74,18 @@
       @endphp
 
       <article class="blog-post">
-        <h2 class="display-5 link-body-emphasis mb-1">Tentang Perusahaan</h2>
+        <!-- <h2 class="display-5 link-body-emphasis mb-1">Tentang Perusahaan</h2>
         <p class="blog-post-meta">{{$tanggalBaru}}</p>
 
         <p>Posting blog ini menunjukkan beberapa jenis konten berbeda yang didukung dan ditata dengan Bootstrap. Tipografi dasar, daftar, tabel, gambar, kode, dan lainnya semuanya didukung seperti yang diharapkan.</p>
         
         <!-- <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p> -->
-        <h2>Bagian lain perusahaan, mungkin visi misi</h2>
+        <!-- <h2>Bagian lain perusahaan, mungkin visi misi</h2>
         <p>Ini nanti akan menjadi seperti sinopsis dari proyeknya lah</p>
         <hr>
-        <p>Ini bagian paragrap 2 kalau ada</p>
-        <h2>Detail dari proyek misal gambar atau yang lain</h2>
-        <p>Berikut adalah bla bla bla....</p>
+        <p>Ini bagian paragrap 2 kalau ada</p> -->
+        <h2>Detail Proyek {{$project['project_name']}}</h2>
+        <p class="justify-text indent-if-multiply-lines">{{$project['description']}}</p>
         <div>
           <img src="{{ asset('storage/images/'.$project['img_project']) }}" class="img-detail">
           </div><!-- ini nanti gambar dari proyeknya -->
@@ -72,10 +125,8 @@
 
     <div class="col-md-4">
       <div class="position-sticky" style="top: 2rem;">
-        <div class="p-4 mb-3 bg-body-tertiary rounded">
-          <h4 class="fst-italic">{{$project['project_name']}}</h4>
-          <p class="mb-0">Penjelasan singkat misal berikut adalah contoh proyek dari perusahaan yang sama </p>
-        </div>
+        <h4 class="fst-italic">{{$project['project_name']}}</h4>
+        <p class="mb-4">Penjelasan singkat misal berikut adalah contoh proyek dari perusahaan yang sama </p>
 
         <div>
           <h4 class="fst-italic">Contoh</h4>
@@ -94,7 +145,7 @@
                 <p class="reward-description">Description of Reward Level 1</p>
                 <p class="reward-price">Price: $10</p>
                 <p class="reward-quantity">Available: 100</p>
-                <a href="#" class="btn btn-primary reward-button" style="margin-bottom:10px;">Select Reward</a>
+                <a href="#" class="btn btn-success reward-button" style="margin-bottom:10px;">Select Reward</a>
             </li>
             @endforeach
             <!-- <li>
@@ -147,8 +198,8 @@
       </div>
     </div>
   </div>
+
 </main>
-
-<script src="/js/bootstrap.bundle.min.js"></script>
-
 @endsection
+    </body>
+</html>
