@@ -251,7 +251,7 @@
 
       <article class="blog-post">
         <h2 class="display-5 link-body-emphasis mb-1">Tentang Perusahaan</h2>
-        <p class="blog-post-meta">January 1, 2021 by <a href="#">Mark</a></p>
+        <p class="blog-post-meta">January 1, 2021 by <a href="#">{{$project['creator_id']}}</a></p>
 
         <p>Posting blog ini menunjukkan beberapa jenis konten berbeda yang didukung dan ditata dengan Bootstrap. Tipografi dasar, daftar, tabel, gambar, kode, dan lainnya semuanya didukung seperti yang diharapkan.</p>
         
@@ -266,7 +266,7 @@
         <h2>Detail dari proyek misal gambar atau yang lain</h2>
         <p>Berikut adalah bla bla bla....</p>
         <ul>
-          <li><img src="asset/image/pantai.jpg"></li> <!-- ini nanti gambar dari proyeknya -->
+          <li><img src="{{ asset('storage/images/'.$project['img_project']) }}"></li> <!-- ini nanti gambar dari proyeknya -->
           <li><em>To italicize text</em>, use <code class="language-plaintext highlighter-rouge">&lt;em&gt;</code>.</li>
           <li>Abbreviations, like <abbr title="HyperText Markup Language">HTML</abbr> should use <code class="language-plaintext highlighter-rouge">&lt;abbr&gt;</code>, with an optional <code class="language-plaintext highlighter-rouge">title</code> attribute for the full phrase.</li>
           <li>Citations, like <cite>— Mark Otto</cite>, should use <code class="language-plaintext highlighter-rouge">&lt;cite&gt;</code>.</li>
