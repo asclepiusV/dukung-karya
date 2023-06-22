@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-ungu">
     <div class="container">
         <a class="navbar-brand" href="/">Dukung Karya</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"

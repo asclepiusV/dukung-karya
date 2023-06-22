@@ -55,7 +55,7 @@ class ProjectController extends Controller
         Project::create([
             'project_name' => $projectName,
             'slug' => $slug,
-            'creator_id' => $id,
+            'user_id' => $id,
             'category_id' => $projectCategory,
             'description' => $projectDesc,
             'funding_goal' => $projectGoal,
