@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-ungu">
+<nav class="navbar navbar-expand-lg navbar-dark bg-success">
     <div class="container">
-        <a class="navbar-brand" href="/">Dukung Karya</a>
+        <a class="navbar-brand" href="/"><b>Dukung Karya</b></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -8,25 +8,25 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link {{ $title === "Home" ? 'active' : '' }}" href="/">Home</a>
+                    <a class="nav-link {{ $title === "Home" ? 'active' : '' }}" href="/"><b>Home</b></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ $title === "Lists" ? 'active' : '' }}" href="/lists">List Proyek</a>
+                    <a class="nav-link {{ $title === "Lists" ? 'active' : '' }}" href="/lists"><b>List Proyek</b></a>
                 </li>
                 @if (Auth::check()) 
                 <li class="nav-item">
-                    <a class="nav-link {{ $title === "Start" ? 'active' : '' }}" href="/start">Start a Project</a>
+                    <a class="nav-link {{ $title === "Start" ? 'active' : '' }}" href="/start"><b>Start a Project</b></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Welcome, {{ auth()->user()->username }}
-                    </a>
+                        <b>Welcome, {{ auth()->user()->username }}
+                        </b></a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#"><i class="bi bi-person"></i> Profil</a>
+                        <a class="dropdown-item" href="#"><i class="bi bi-person"></i> <b>Profil</b></a>
                         <div class="dropdown-divider"></div>
                         <form action="/logout" method="post">
                             @csrf
-                            <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-right"></i> Logout</button>
+                            <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-right"></i> <b>Logout</b></button>
                         </form>
                     </div>
                 </li>

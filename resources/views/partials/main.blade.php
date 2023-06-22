@@ -4,19 +4,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $title }}</title>
+    <title>Dukung Karya | {{ $title }}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/blog/">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/css/blog.css" rel="stylesheet">
     <style>
+        .font{
+            font-family:   Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
         .image {
             width: 100%;
             height: 200px;
             object-fit: cover;
             object-position: 100% 8%;
         }
+        .img-blog{
+            width: 100px;
+            height: 100px;
+            object-fit:cover;
+        }
+        .img-detail {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+        .img-div {
+            width: 650px;
+            height: 350px;
+        }
         .bg-ungu{
-            background-color: #573abd;
+            background-color: #6700CD;
+        }
+        .footer-section {
+            background-color: blue;
         }
 
         body {
@@ -25,7 +55,7 @@
             min-height: 100vh;
             margin: 0;
             padding-bottom: 100px;
-            padding-top: 50px;
+            /* padding-top: 50px; */
         }
 
         .project-card {
@@ -84,13 +114,14 @@
             margin-bottom: 0;
         }
 
-        .navbar {
+        /* agar navbar selalu di atas */
+        /* .navbar {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 9999;
-        }
+        } */
 
         .slick-prev,
         .slick-next {
@@ -110,7 +141,7 @@
         .slick-prev:hover,
         .slick-next:hover {
             /* background-color: rgba(0, 0, 0, 0.671); */
-            background-color: #007bff;
+            background-color: #28a475;
         }
 
         .slick-prev {
@@ -199,7 +230,7 @@
 
     @yield('container')
 
-    <section class="footer-section">
+    <section class="footer-section bg-success">
         <div class="container">
             <p>&copy; 2023 Dukung Karya. All rights reserved.</p>
         </div>
