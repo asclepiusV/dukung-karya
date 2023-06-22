@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Models\Project;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -21,46 +22,7 @@ class ProjectController extends Controller
 
         $image = public_path('projects-img_project.bin');
         $imageData = base64_encode(file_get_contents($image));
-        $src = 'data: ' . mime_content_type($image) . ';base64,' . $imageData;
-
-        $projects = [
-            [
-                "project_name" => "Tools Up",
-                "slug" => "permainan-1",
-                "project_description" => "Ini adala proyek permainan",
-                "project_image" => "asset/image/toolsUp.jpg"
-            ],
-            [
-                "project_name" => "Karya",
-                "slug" => "karya-1",
-                "project_description" => "Ini adala proyek karya",
-                "project_image" => "asset/image/karya1.jpeg"
-            ],
-            [
-                "project_name" => "Musik",
-                "slug" => "musik-1",
-                "project_description" => "Ini adala proyek musik",
-                "project_image" => "asset/image/music1.jpg"
-            ],
-            [
-                "project_name" => "Walking Dead",
-                "slug" => "permainan-2",
-                "project_description" => "Ini adala proyek permainan",
-                "project_image" => "asset/image/walkingDead.jpg"
-            ],
-            [
-                "project_name" => "Karya",
-                "slug" => "karya-2",
-                "project_description" => "Ini adala proyek karya",
-                "project_image" => "asset/image/karya2.jpg"
-            ],
-            [
-                "project_name" => "Musik",
-                "slug" => "musik-2",
-                "project_description" => "Ini adala proyek musik",
-                "project_image" => "asset/image/music2.jpg"
-            ]
-        ];
+        // $src = 'data: ' . mime_content_type($image) . ';base64,' . $imageData;
 
         return View('welcome', [
             "project" => $data,
@@ -83,6 +45,7 @@ class ProjectController extends Controller
         $projectDesc = $request->projectDesc;
         $projectGoal = $request->projectGoal;
         $duration = $request->duration;
+        $id = auth()->user()->user_id;
 
         $name = $request->file('image')->getClientOriginalName();
         $request->file('image')->storeAs('public/images', $name);
@@ -92,6 +55,7 @@ class ProjectController extends Controller
         Project::create([
             'project_name' => $projectName,
             'slug' => $slug,
+            'creator_id' => $id,
             'category_id' => $projectCategory,
             'description' => $projectDesc,
             'funding_goal' => $projectGoal,

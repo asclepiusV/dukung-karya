@@ -1,7 +1,8 @@
-    @include('partials.navbar')
+@extends('partials.main')
 
-<div class="container">
-    <h1 class="mt-5">Kickstarter Home</h1>
+@section('container')
+    <div class="container">
+        <h1 class="mt-5">Kickstarter Home</h1>
 
     @if(count($project))
         <div class="card mb-3">
@@ -36,4 +37,4 @@
     @endif
 </div>
 
-@include('partials.footer')
+    @endsection

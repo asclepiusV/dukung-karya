@@ -17,27 +17,32 @@ class UserSeeder extends Seeder
             [
                 'username' => 'admin',
                 'email' => 'admin@gmail.com',
-                'password' => '1234'
+                'password' => '1234',
+                'fullname' => 'Admin Ganteng'
             ],
             [
                 'username' => 'ebel',
                 'email' => 'ebel@gmail.com',
-                'password' => '1234'
+                'password' => '1234',
+                'fullname' => 'Muhammad Khaliq T. A.'
             ],
             [
                 'username' => 'obyy',
                 'email' => 'obyy@gmail.com',
-                'password' => '1234'
+                'password' => '1234',
+                'fullname' => 'Muhammad Qalby'
             ],
             [
                 'username' => 'ravi',
                 'email' => 'ravi@gmail.com',
-                'password' => '1234'
+                'password' => '1234',
+                'fullname' => 'Muhammad Ravi Himawan'
             ],
             [
                 'username' => 'tono',
                 'email' => 'tono@gmail.com',
-                'password' => '1234'
+                'password' => '1234',
+                'fullname' => 'Tono not'
             ],
         ];
 
