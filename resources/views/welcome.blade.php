@@ -1,23 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kickstarter</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <style>
-        .image{
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            object-position: 100% 8%;
-        }
-    </style>
-</head>
-
-
-<body>
     @include ('partials.navbar')
     <div class="jumbotron text-center">
         <h1 class="display-4">Selamat datang di Dukung Karya</h1>
@@ -31,7 +11,7 @@
         <div class="row mb-5">
             @foreach ($project as $item)
             <div class="col-md-4">
-                <div class="card">
+                <div class="card project-card">
                     <img src="{{ asset('storage/images/'.$item['img_project']) }}" class="card-img-top image" alt="Project Image">
                     {{-- <img src="/asset/image/karya1.jpeg" class="card-img-top image" alt="Project Image"> --}}
                     <div class="card-body">
@@ -46,9 +26,4 @@
         @endforeach
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-</body>
-
-</html>
+    @include ('partials.footer')
