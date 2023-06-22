@@ -81,13 +81,11 @@ class ProjectController extends Controller
         $projectDesc = $request->projectDesc;
         $projectGoal = $request->projectGoal;
         $duration = $request->duration;
-        // $imgProject = $request->file('image');
 
         $name = $request->file('image')->getClientOriginalName();
         $request->file('image')->storeAs('public/images', $name);
         $urlImage = "storage/images/";
-        // return redirect()->back();
-        // $imgProject = ;
+
 
         Project::create([
             'project_name' => $projectName,
@@ -100,12 +98,7 @@ class ProjectController extends Controller
             'img_project' => $name,
         ]);
 
-
-        $data = Project::get()->toArray();
-
-        return view('welcome', [
-            "project" => $data
-        ]);
+        return redirect()->route('home');
     }
 
     public function detailProject($slug)
