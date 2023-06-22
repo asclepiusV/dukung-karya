@@ -85,10 +85,10 @@ Route::get('/projects/{slug}/payment', function ($slug) {
     ]);
 });
 
-// Route::get('/start', [ProjectController::class, 'startProject'])->Middleware('auth');
-Route::get('/start', [ProjectController::class, 'startProject']);
-// Route::post('/', [ProjectController::class, 'createProject'])->Middleware('auth');
-Route::post('/upload', [ProjectController::class, 'createProject']);
+Route::get('/start', [ProjectController::class, 'startProject'])->Middleware('auth');
+// Route::get('/start', [ProjectController::class, 'startProject']);
+Route::post('/upload', [ProjectController::class, 'createProject'])->Middleware('auth');
+// Route::post('/upload', [ProjectController::class, 'createProject']);
 
 // Route::get('/start/checkSlug', [ProjectController::class, 'checkSlug']);
 
