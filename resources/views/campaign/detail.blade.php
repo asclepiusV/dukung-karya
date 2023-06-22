@@ -7,15 +7,12 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.112.5">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <title>Blog Template · Bootstrap v5.3</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/blog/">
 
-    
-
-    
-
-<link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -163,7 +160,7 @@
   </symbol>
 </svg>
 
-<div class="container">
+<!-- <div class="container">
   <header class="border-bottom lh-1 py-3">
     <div class="row flex-nowrap justify-content-between align-items-center">
       <div class="col-4 pt-1">
@@ -197,18 +194,19 @@
       <a class="nav-item nav-link link-body-emphasis" href="#">Travel</a>
     </nav>
   </div>
-</div>
+</div> -->
+@include ('partials.navbar')
 
 <main class="container">
-  <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+  <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis">
     <div class="col-lg-6 px-0">
-      <h1 class="display-4 fst-italic">Title of a longer featured blog post</h1>
-      <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
-      <p class="lead mb-0"><a href="#" class="text-body-emphasis fw-bold">Continue reading...</a></p>
+      <h1 class="display-4 fst-italic">{{$project['project_name']}}</h1>
+      <p class="lead my-3">{{$project['project_description']}}</p>
+      <!-- <p class="lead mb-0"><a href="#" class="text-body-emphasis fw-bold">Continue reading...</a></p> -->
     </div>
   </div>
 
-  <div class="row mb-2">
+  <!-- <div class="row mb-2">
     <div class="col-md-6">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
@@ -218,14 +216,14 @@
           <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
           <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
             Continue reading
-            <svg class="bi"><use xlink:href="#chevron-right"/></svg>
           </a>
         </div>
         <div class="col-auto d-none d-lg-block">
-          <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+          <img src="<?php echo $project['project_image']?>">
         </div>
       </div>
     </div>
+
     <div class="col-md-6">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
         <div class="col p-4 d-flex flex-column position-static">
@@ -243,59 +241,63 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <div class="row g-5">
     <div class="col-md-8">
       <h3 class="pb-4 mb-4 fst-italic border-bottom">
-        From the Firehose
+        Nama Perusahaan <!-- ini nanti nama perusahaan atau kelompok -->
       </h3>
 
       <article class="blog-post">
-        <h2 class="display-5 link-body-emphasis mb-1">Sample blog post</h2>
+        <h2 class="display-5 link-body-emphasis mb-1">Tentang Perusahaan</h2>
         <p class="blog-post-meta">January 1, 2021 by <a href="#">Mark</a></p>
 
-        <p>This blog post shows a few different types of content that’s supported and styled with Bootstrap. Basic typography, lists, tables, images, code, and more are all supported as expected.</p>
+        <p>Posting blog ini menunjukkan beberapa jenis konten berbeda yang didukung dan ditata dengan Bootstrap. Tipografi dasar, daftar, tabel, gambar, kode, dan lainnya semuanya didukung seperti yang diharapkan.</p>
+        
+        <!-- <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p> -->
+        <h2>Bagian lain perusahaan, mungkin visi misi</h2>
+        <p>Ini nanti akan menjadi seperti sinopsis dari proyeknya lah</p>
         <hr>
-        <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
-        <h2>Blockquotes</h2>
-        <p>This is an example blockquote in action:</p>
-        <blockquote class="blockquote">
+        <!-- <blockquote class="blockquote">
           <p>Quoted text goes here.</p>
-        </blockquote>
-        <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
-        <h3>Example lists</h3>
-        <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other highly repetitive body text used throughout. This is an example unordered list:</p>
+        </blockquote> -->
+        <p>Ini bagian paragrap 2 kalau ada</p>
+        <h2>Detail dari proyek misal gambar atau yang lain</h2>
+        <p>Berikut adalah bla bla bla....</p>
         <ul>
-          <li>First list item</li>
-          <li>Second list item with a longer description</li>
-          <li>Third list item to close it out</li>
-        </ul>
-        <p>And this is an ordered list:</p>
-        <ol>
-          <li>First list item</li>
-          <li>Second list item with a longer description</li>
-          <li>Third list item to close it out</li>
-        </ol>
-        <p>And this is a definition list:</p>
-        <dl>
-          <dt>HyperText Markup Language (HTML)</dt>
-          <dd>The language used to describe and define the content of a Web page</dd>
-          <dt>Cascading Style Sheets (CSS)</dt>
-          <dd>Used to describe the appearance of Web content</dd>
-          <dt>JavaScript (JS)</dt>
-          <dd>The programming language used to build advanced Web sites and applications</dd>
-        </dl>
-        <h2>Inline HTML elements</h2>
-        <p>HTML defines a long list of available inline tags, a complete list of which can be found on the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">Mozilla Developer Network</a>.</p>
-        <ul>
-          <li><strong>To bold text</strong>, use <code class="language-plaintext highlighter-rouge">&lt;strong&gt;</code>.</li>
+          <li><img src="asset/image/pantai.jpg"></li> <!-- ini nanti gambar dari proyeknya -->
           <li><em>To italicize text</em>, use <code class="language-plaintext highlighter-rouge">&lt;em&gt;</code>.</li>
           <li>Abbreviations, like <abbr title="HyperText Markup Language">HTML</abbr> should use <code class="language-plaintext highlighter-rouge">&lt;abbr&gt;</code>, with an optional <code class="language-plaintext highlighter-rouge">title</code> attribute for the full phrase.</li>
           <li>Citations, like <cite>— Mark Otto</cite>, should use <code class="language-plaintext highlighter-rouge">&lt;cite&gt;</code>.</li>
           <li><del>Deleted</del> text should use <code class="language-plaintext highlighter-rouge">&lt;del&gt;</code> and <ins>inserted</ins> text should use <code class="language-plaintext highlighter-rouge">&lt;ins&gt;</code>.</li>
           <li>Superscript <sup>text</sup> uses <code class="language-plaintext highlighter-rouge">&lt;sup&gt;</code> and subscript <sub>text</sub> uses <code class="language-plaintext highlighter-rouge">&lt;sub&gt;</code>.</li>
         </ul>
+        <h3>Benefit</h3>
+        <p>Penjelasan jika memberikan donasi berapa akan mendapatkan....:</p>
+        <!-- <ul>
+          <li>$10,000</li>
+          <li>$15,000</li>
+          <li>$20,000</li>
+        </ul> -->
+        <!-- <p>And this is an ordered list:</p>
+        <ol>
+          <li>First list item</li>
+          <li>Second list item with a longer description</li>
+          <li>Third list item to close it out</li>
+        </ol> -->
+        <!-- <p>Penjelasan ketika berdonasi sesuai list di atas</p> -->
+        <dl>
+          <dt>$10,000</dt>
+          <dd>Bakal dapat akun premium dll......</dd>
+          <dt>$15,000</dt>
+          <dd>bla bla bla....</dd>
+          <dt>$20,000</dt>
+          <dd>banyak benefit</dd>
+        </dl>
+
+        <a href="#" type="button" class="btn btn-success btn-lg">Donasi</a>
+
         <p>Most of these elements are styled by browsers with few modifications on our part.</p>
         <h2>Heading</h2>
         <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
@@ -376,18 +378,18 @@
     <div class="col-md-4">
       <div class="position-sticky" style="top: 2rem;">
         <div class="p-4 mb-3 bg-body-tertiary rounded">
-          <h4 class="fst-italic">About</h4>
-          <p class="mb-0">Customize this section to tell your visitors a little bit about your publication, writers, content, or something else entirely. Totally up to you.</p>
+          <h4 class="fst-italic">{{$project['project_name']}}</h4>
+          <p class="mb-0">Penjelasan singkat misal berikut adalah contoh proyek dari perusahaan yang sama </p>
         </div>
 
         <div>
-          <h4 class="fst-italic">Recent posts</h4>
+          <h4 class="fst-italic">Contoh</h4>
           <ul class="list-unstyled">
             <li>
               <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="#">
-                <svg class="bd-placeholder-img" width="100%" height="96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+                <img src="asset/image/karya2.jpg">
                 <div class="col-lg-8">
-                  <h6 class="mb-0">Example blog post title</h6>
+                  <h6 class="mb-0">Blog proyek lainnya</h6>
                   <small class="text-body-secondary">January 15, 2023</small>
                 </div>
               </a>
