@@ -28,9 +28,10 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/', [ProjectController::class, 'index'])->name('home');
 
+Route::get('/lists', [ProjectController::class, 'listProject'])->name('lists');
+
 Route::get('/projects/{slug}', [ProjectController::class, 'detailProject']);
 
-Route::get('/lists', [ProjectController::class, 'listProject']);
 
 Route::get('/projects/{slug}/payment', function ($slug) {
     $projects = [

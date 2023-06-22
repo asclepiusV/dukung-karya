@@ -1,4 +1,6 @@
-@include('partials.navbar')
+@extends('partials.main')
+
+@section('container')
 
 <div class="container mb-5">
     <div class="row justify-content-center mt-5">
@@ -55,4 +57,4 @@
     </div>
 </div>
 
-@include('partials.footer')
+@endsection

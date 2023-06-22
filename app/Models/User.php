@@ -53,7 +53,7 @@ class User extends Authenticatable
 
     public function projects()
     {
-        return $this->hasMany(Project::class);
+        return $this->hasMany(Project::class, 'user_id', 'user_id');
     }
 
     public function backers()

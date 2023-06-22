@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+    @extends('partials.main')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-</head>
-
-<body>
-@include ('partials.navbar')
+    @section('container')
     <div class="container">
         <div class="row justify-content-center mt-5">
             <div class="col-md-6">
@@ -50,6 +41,5 @@
             </div>
         </div>
     </div>
-</body>
 
-</html>
+    @endsection
