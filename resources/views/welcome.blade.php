@@ -1,8 +1,8 @@
     @include ('partials.navbar')
     <div class="jumbotron text-center">
-        <h1 class="display-4">Selamat datang di Dukung Karya</h1>
-        <p class="lead">Jelajahi proyek luar biasa dan bantu wujudkan menjadi nyata.</p>
-        <a class="btn btn-primary btn-lg" href="/start" role="button">Get Started</a>
+        <h1 class="display-4 mb-4">Selamat datang di Dukung Karya</h1>
+        <p class="lead mb-4">Jelajahi proyek luar biasa dan bantu wujudkan menjadi nyata.</p>
+        <a class="btn btn-primary btn-lg" href="/start" role="button">Inisiasi Proyek Anda</a>
     </div>
 
 
