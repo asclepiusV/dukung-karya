@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-body">
                     <h1 class="card-title text-center mb-5">Buat Ide Proyek Anda</h1>
-                    <form method="post" action="/" enctype="multipart/form-data">
+                    <form method="post" action="/upload" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="title">Judul Proyek</label>

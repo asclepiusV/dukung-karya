@@ -19,6 +19,8 @@ class Project extends Model
         'project_id',
     ];
 
+    protected $primaryKey = 'project_id';
+
     public function category()
     {
         return $this->belongsTo(Category::class);

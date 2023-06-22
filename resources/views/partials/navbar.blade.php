@@ -91,14 +91,14 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Home</a>
+                        <a class="nav-link {{ $title === "Home" ? 'active' : '' }}" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/lists">List Proyek</a>
+                        <a class="nav-link {{ $title === "Lists" ? 'active' : '' }}" href="/lists">List Proyek</a>
                     </li>
                     @auth 
                     <li class="nav-item">
-                        <a class="nav-link" href="/start">Start a Project</a>
+                        <a class="nav-link {{ $title === "Start" ? 'active' : '' }}" href="/start">Start a Project</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -116,13 +116,13 @@
                     </li>
                     @else
                     <li class="nav-item">
-                        <a class="nav-link" href="/login">Start a Project</a>
+                        <a class="nav-link {{ $title === "Start" ? 'active' : '' }}" href="/login">Start a Project</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/login" class="nav-link"><i class = "bi bi-box-arrow-in-right"></i>Login</a>
+                        <a class="nav-link {{ $title === "Login" ? 'active' : '' }}" href="/login" class="nav-link"><i class = "bi bi-box-arrow-in-right"></i>Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/register">Register</a>
+                        <a class="nav-link {{ $title === "Register" ? 'active' : '' }}" href="/register">Register</a>
                     </li>
                     @endauth
                 </ul>
