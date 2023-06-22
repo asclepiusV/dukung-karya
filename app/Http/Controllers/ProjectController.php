@@ -150,8 +150,8 @@ class ProjectController extends Controller
         // ];
 
         //REQUEST
-        $data = Project::where('slug', $slug)->first();
-
+        $data = Project::with('user')->where('slug', $slug)->first();
+        $allData = Project::with('user')->get();
         // $new_project = [];
         // foreach ($projects as $item) {
         //     if ($item["slug"] === $slug)
@@ -160,7 +160,8 @@ class ProjectController extends Controller
 
         return view('campaign/detail', [
             "title" => "A Project",
-            "project" => $data
+            "project" => $data,
+            "allData" => $allData
         ]);
     }
 
@@ -181,5 +182,4 @@ class ProjectController extends Controller
         $slug = SlugService::createSlug(Project::class, 'slug', $request->title);
         return response()->json(['slug' => $slug]);
     }
-
 }
