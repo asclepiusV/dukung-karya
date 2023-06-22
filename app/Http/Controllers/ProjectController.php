@@ -55,7 +55,7 @@ class ProjectController extends Controller
         Project::create([
             'project_name' => $projectName,
             'slug' => $slug,
-            'creator_id' => $id,
+            'user_id' => $id,
             'category_id' => $projectCategory,
             'description' => $projectDesc,
             'funding_goal' => $projectGoal,
@@ -110,5 +110,24 @@ class ProjectController extends Controller
     //     $slug = SlugService::createSlug(Project::class, 'slug', $request->title);
     //     return response()->json(['slug' => $slug]);
     // }
+
+    public function payment($slug, Request $request)
+    {
+        $data = Project::where('slug', $slug)->first();
+        $allData = Project::with('user')->get();
+        // $new_project = [];
+        // foreach ($allData as $item) {
+        //     if ($item->slug === $slug) {
+        //         $new_project = $item;
+        //         break;
+        //     }
+        // }
+
+        return view('campaign/payment', [
+            "title" => "Payment a Project",
+            "project" => $data
+        ]);
+    }
+
 
 }

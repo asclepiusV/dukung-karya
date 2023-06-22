@@ -10,13 +10,13 @@
 
 <body>
     <div class="container">
-        <h1 class="mt-5">Donation Payment</h1>
+        <h1 class="mt-5">Pembayaran Donasi untuk Proyek {{$project['project_name']}}</h1>
         <div class="card mt-4">
             <div class="card-body">
                 <h5 class="card-title">{{ $project['project_name'] }}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Amount to Donate</h6>
                 <p class="card-text">$100</p>
-                <h6 class="card-subtitle mb-2 text-muted">Payment Information</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Informasi Pembayaran</h6>
                 <form>
                     <div class="form-group">
                         <label for="nameOnCard">Name on Card</label>
@@ -38,6 +38,10 @@
                     </div>
                     <div class="form-group mt-4">
                         <button type="submit" class="btn btn-primary">Submit Payment</button>
+                        <a href="/projects/{{$project['slug']}}" class="btn btn-danger">Cancel</a>
+                        <button type="button" class="btn btn-success">GoPay</button>
+                        <button type="button" class="btn btn-info">OVO</button>
+                        <button type="button" class="btn btn-warning">Dana</button>
                     </div>
                 </form>
             </div>

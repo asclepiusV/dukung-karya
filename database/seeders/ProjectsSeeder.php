@@ -64,7 +64,7 @@ class ProjectsSeeder extends Seeder
             ],
         ];
 
-        foreach($projects as $project){
+        foreach ($projects as $project) {
             Project::create($project);
         }
     }
