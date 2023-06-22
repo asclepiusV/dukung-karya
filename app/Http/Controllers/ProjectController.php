@@ -107,11 +107,11 @@ class ProjectController extends Controller
     {
         //REQUEST
         $data = Project::where('slug', $slug)->first();
-
-
+        $allData = Project::with('user')->get();
         return view('campaign/detail', [
             "title" => "A Project",
-            "project" => $data
+            "project" => $data,
+            "allData" => $allData
         ]);
     }
 

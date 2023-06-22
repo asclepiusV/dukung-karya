@@ -55,9 +55,4 @@ class Project extends Model
         $this->attributes['project_name'] = $value;
         $this->attributes['slug'] = Str::slug($value);
     }
-
-    public function creator()
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
 }
