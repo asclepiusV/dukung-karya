@@ -81,11 +81,27 @@ class ProjectController extends Controller
 
     public function listProject()
     {
-        $data = Project::get()->toArray();
 
+        $perPage = 9; // Jumlah data yang ingin ditampilkan per halaman
+        // $offset = ($page - 1) * $perPage;
+        // $projects = Project::skip($offset)->take($perPage)->get();
+
+
+        $data = Project::get()->toArray();
+        // $data = Project::paginate(6);
+        // $chunks = $data->chunk(3);
+        // $totalChunks = $chunks->count();
+        // $showNextButton = true;
+        // $currentIndex = $data->currentPage() - 1;
+
+        // return view('lists.index', compact('chunks', 'totalChunks', 'showNextButton', 'currentIndex'));
         return view('campaign/listing', [
             "title" => "Lists",
-            "project" => $data
+            "project" => $data,
+            // "chunks" => $chunks,
+            // "totalChunks" => $totalChunks,
+            // "showNextButton" => $showNextButton,
+            // "currentIndex" => $currentIndex
         ]);
     }
 
@@ -94,5 +110,24 @@ class ProjectController extends Controller
     //     $slug = SlugService::createSlug(Project::class, 'slug', $request->title);
     //     return response()->json(['slug' => $slug]);
     // }
+
+    public function payment($slug, Request $request)
+    {
+        $data = Project::where('slug', $slug)->first();
+        $allData = Project::with('user')->get();
+        // $new_project = [];
+        // foreach ($allData as $item) {
+        //     if ($item->slug === $slug) {
+        //         $new_project = $item;
+        //         break;
+        //     }
+        // }
+
+        return view('campaign/payment', [
+            "title" => "Payment a Project",
+            "project" => $data
+        ]);
+    }
+
 
 }

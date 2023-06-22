@@ -33,58 +33,7 @@ Route::get('/lists', [ProjectController::class, 'listProject'])->name('lists');
 Route::get('/projects/{slug}', [ProjectController::class, 'detailProject']);
 
 
-Route::get('/projects/{slug}/payment', function ($slug) {
-    $projects = [
-        [
-            "project_name" => "Permainan",
-            "slug" => "permainan-1",
-            "project_description" => "Ini adala proyek permainan",
-            "project_image" => "asset/image/toolsUp.jpg"
-        ],
-        [
-            "project_name" => "Karya",
-            "slug" => "karya-1",
-            "project_description" => "Ini adala proyek karya",
-            "project_image" => "asset/image/karya1.jpeg"
-        ],
-        [
-            "project_name" => "Musik",
-            "slug" => "musik-1",
-            "project_description" => "Ini adala proyek musik",
-            "project_image" => "asset/image/music1.jpg"
-        ],
-        [
-            "project_name" => "Permainan",
-            "slug" => "permainan-2",
-            "project_description" => "Ini adala proyek permainan",
-            "project_image" => "asset/image/walkingDead.jpg"
-        ],
-        [
-            "project_name" => "Karya",
-            "slug" => "karya-2",
-            "project_description" => "Ini adala proyek karya",
-            "project_image" => "asset/image/karya2.jpg"
-        ],
-        [
-            "project_name" => "Musik",
-            "slug" => "musik-2",
-            "project_description" => "Ini adala proyek musik",
-            "project_image" => "asset/image/music2.jpg"
-        ]
-    ];
-
-
-    $new_project = [];
-    foreach ($projects as $item) {
-        if ($item["slug"] === $slug)
-            $new_project = $item;
-    }
-
-    return view('campaign/payment', [
-        "title" => "Payment a Project",
-        "project" => $new_project
-    ]);
-});
+Route::get('/projects/{slug}/payment', [ProjectController::class, 'payment'])->middleware('auth');
 
 Route::get('/start', [ProjectController::class, 'startProject'])->Middleware('auth');
 // Route::get('/start', [ProjectController::class, 'startProject']);
@@ -92,4 +41,3 @@ Route::post('/upload', [ProjectController::class, 'createProject'])->Middleware(
 // Route::post('/upload', [ProjectController::class, 'createProject']);
 
 // Route::get('/start/checkSlug', [ProjectController::class, 'checkSlug']);
-
