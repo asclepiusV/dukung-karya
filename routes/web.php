@@ -18,12 +18,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Login
-Route::get('/login', [LoginController::class, 'index'])->name('login')->Middleware('guest');
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
 
-Route::get('/register', [RegisterController::class, 'index']);
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/', [ProjectController::class, 'index']);
@@ -86,7 +86,7 @@ Route::get('/projects/{slug}/payment', function ($slug) {
 });
 
 Route::get('/start', [ProjectController::class, 'startProject'])->Middleware('auth');
-Route::post('/', [ProjectController::class, 'createProject'])->Middleware('auth');
+Route::post('/', [ProjectController::class, 'createProject']);
 
 Route::get('/start/checkSlug', [ProjectController::class, 'checkSlug']);
 

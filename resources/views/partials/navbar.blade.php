@@ -13,7 +13,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/lists">List Proyek</a>
                     </li>
-                    @auth 
+                    @if (Auth::check()) 
                     <li class="nav-item">
                         <a class="nav-link" href="/start">Start a Project</a>
                     </li>
@@ -24,7 +24,6 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#"><i class="bi bi-layout-text-sidebar-reverse"></i>Profil</a>
                         <div class="dropdown-divider"></div>
-                        <li>
                             <form action="/logout" method="post">
                                 @csrf
                                 <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-right"></i>Logout</a>
