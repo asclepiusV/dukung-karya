@@ -22,7 +22,8 @@ return new class extends Migration
             $table->char('current_funding', 30)->nullable();
             $table->char('duration_fund')->nullable();
             $table->boolean('is_validated')->default(false);
-            $table->binary('img_project')->nullable();
+            // $table->binary('img_project')->nullable();
+            $table->string('img_project');
             $table->timestamps();
         });
     }

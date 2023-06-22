@@ -32,10 +32,11 @@
             @foreach ($project as $item)
             <div class="col-md-4">
                 <div class="card">
-                    <img src="{{ $item["project_image"] }}" class="card-img-top image" alt="Project Image">
+                    <img src="{{ asset('storage/images/'.$item['img_project']) }}" class="card-img-top image" alt="Project Image">
+                    {{-- <img src="/asset/image/karya1.jpeg" class="card-img-top image" alt="Project Image"> --}}
                     <div class="card-body">
                         <h5 class="card-title">{{ $item["project_name"] }}</h5>
-                        <p class="card-text">{{ $item["project_description"] }}</p>
+                        <p class="card-text">{{ $item["description"] }}</p>
                         <a href="/projects/{{ $item["slug"] }}" class="btn btn-primary">Support Project</a>
                     </div>
                 </div>

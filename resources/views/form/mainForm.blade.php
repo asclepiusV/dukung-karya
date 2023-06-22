@@ -13,7 +13,7 @@
     <div class="container">
         <h1 class="mt-5">Create a New Project</h1>
         <div class="col-lg-8">
-            <form method="post" action="/">
+            <form method="post" action="/" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="title">Judul Proyek</label>
@@ -33,7 +33,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Default file input example</label>
-                    <input class="form-control" type="file" id="formFile" name="imgProject">
+                    <input class="form-control" type="file" id="formFile" name="image">
                 </div>
                 <div class="form-group">
                     <label for="projectDescription">Deskripsi Proyek</label>
@@ -53,7 +53,7 @@
                     <label for="projectDuration">Masukkan durasi hari kampanye</label>
                     <input type="number" class="form-control" id="duration" name="duration" placeholder="Masukkan durasi kampanye">
                 </div>
-                <button type="submit" class="btn btn-primary">Mulai Proyek</button>
+                <button type="submit" class="btn btn-primary" name="Upload">Mulai Proyek</button>
             </form>
         </div>
     </div>

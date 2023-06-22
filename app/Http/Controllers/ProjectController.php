@@ -17,6 +17,11 @@ class ProjectController extends Controller
     public function index()
     {
         $data = Project::get()->toArray();
+        // $data->img_project;
+
+        $image = public_path('projects-img_project.bin');
+        $imageData = base64_encode(file_get_contents($image));
+        $src = 'data: '.mime_content_type($image).';base64,'.$imageData;
 
         $projects = [
             [
@@ -58,7 +63,8 @@ class ProjectController extends Controller
         ];
 
         return View('welcome', [
-            "project" => $projects
+            "project" => $data,
+            'img' => $src
         ]);
     }
 
@@ -75,7 +81,13 @@ class ProjectController extends Controller
         $projectDesc = $request->projectDesc;
         $projectGoal = $request->projectGoal;
         $duration = $request->duration;
-        $imgProject = $request->imgProject;
+        // $imgProject = $request->file('image');
+
+        $name = $request->file('image')->getClientOriginalName();
+        $request->file('image')->storeAs('public/images', $name);
+        $urlImage = "storage/images/";
+        // return redirect()->back();
+        // $imgProject = ;
 
         Project::create([
             'project_name' => $projectName,
@@ -84,50 +96,15 @@ class ProjectController extends Controller
             'description' => $projectDesc,
             'funding_goal' => $projectGoal,
             'duration_fund' => $duration,
-            'img_project' => base64_encode(file_get_contents($imgProject)),
+            // 'img_project' => base64_encode(file_get_contents($imgProject)),
+            'img_project' => $name,
         ]);
 
-        $projects = [
-            [
-                "project_name" => "Tools Up",
-                "slug" => "permainan-1",
-                "project_description" => "Ini adala proyek permainan",
-                "project_image" => "asset/image/toolsUp.jpg"
-            ],
-            [
-                "project_name" => "Karya",
-                "slug" => "karya-1",
-                "project_description" => "Ini adala proyek karya",
-                "project_image" => "asset/image/karya1.jpeg"
-            ],
-            [
-                "project_name" => "Musik",
-                "slug" => "musik-1",
-                "project_description" => "Ini adala proyek musik",
-                "project_image" => "asset/image/music1.jpg"
-            ],
-            [
-                "project_name" => "Walking Dead",
-                "slug" => "permainan-2",
-                "project_description" => "Ini adala proyek permainan",
-                "project_image" => "asset/image/walkingDead.jpg"
-            ],
-            [
-                "project_name" => "Karya",
-                "slug" => "karya-2",
-                "project_description" => "Ini adala proyek karya",
-                "project_image" => "asset/image/karya2.jpg"
-            ],
-            [
-                "project_name" => "Musik",
-                "slug" => "musik-2",
-                "project_description" => "Ini adala proyek musik",
-                "project_image" => "asset/image/music2.jpg"
-            ]
-        ];
+
+        $data = Project::get()->toArray();
 
         return view('welcome', [
-            "project" => $projects->latest()
+            "project" => $data
         ]);
     }
 
