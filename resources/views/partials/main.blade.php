@@ -7,7 +7,7 @@
     <title>Dukung Karya | {{ $title }}</title>
     <link href="{{asset('storage/images/Logo.png')}}" rel="shortcut icon">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-wv+zmBzSFw2a+dAn2GQR7gR0F3/waJWZ5UkOZDhxvIH8v5aFnGjYOn9MT3xhJxK0Jb+yb7vlzTpYSry8XHDgFA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
@@ -139,34 +139,7 @@
             z-index: 9999;
         } */
 
-        .slick-prev,
-        .slick-next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 24px;
-            color: #fff;
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 10px;
-            border-radius: 50%;
-            z-index: 1;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .slick-prev:hover,
-        .slick-next:hover {
-            /* background-color: rgba(0, 0, 0, 0.671); */
-            background-color: #28a475;
-        }
-
-        .slick-prev {
-            left: 10px;
-        }
-
-        .slick-next {
-            right: 10px;
-        }
+        
 
         .jumbotron {
             display: flex;
@@ -198,6 +171,34 @@
             font-size: 24px;
         }
 
+        .slick-prev,
+        .slick-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 50%;
+            z-index: 1;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .slick-prev:hover,
+        .slick-next:hover {
+            /* background-color: rgba(0, 0, 0, 0.671); */
+            background-color: #28a475;
+        }
+
+        .slick-prev {
+            left: 10px;
+        }
+
+        .slick-next {
+            right: 10px;
+        }
         .btn-lg {
             font-size: 18px;
         }
@@ -248,7 +249,7 @@
             bottom: 20px;
             right: 20px;
             z-index: 99;
-            border: 1px solid white;
+            border: 2px solid white;
             outline: none;
             background-color: #198754;
             color: white;
