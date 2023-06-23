@@ -310,7 +310,7 @@
         function smoothScrollToTop() {
             const scrollToTop = () => {
             if (document.documentElement.scrollTop > 0) {
-            window.scrollBy(0, -30);
+            window.scrollBy(0, -60);
             requestAnimationFrame(scrollToTop);
             }
         };
