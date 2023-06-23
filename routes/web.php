@@ -49,3 +49,5 @@ Route::post('/reward', [ProjectController::class, 'addReward'])->middleware('aut
 //Route Admin
 Route::get('/admin', [AdminControl::class, 'index'])->middleware('auth');
 Route::get('/admin/validasi/{slug}', [AdminControl::class, 'validasi'])->middleware('auth');
+
+Route::get('/admin/get-projects-by-category/{slug}', [AdminControl::class, 'getProjectsByCategory']);

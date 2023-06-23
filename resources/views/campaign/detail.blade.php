@@ -33,7 +33,10 @@
         @if(auth()->user())
           @if(auth()->user()->is_admin == 1)
           <a href="/admin" type="button" class="btn btn-success btn-lg">Edit</a>
+          @else
+          <a href="/projects/{{ $project["slug"] }}/payment" type="button" class="btn btn-success btn-lg">Donasi</a>
           @endif
+        @else
         <a href="/projects/{{ $project["slug"] }}/payment" type="button" class="btn btn-success btn-lg">Donasi</a>
         @endif
       </article>
