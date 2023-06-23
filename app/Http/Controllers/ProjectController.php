@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use App\Models\Project;
 use App\Models\Reward;
+use App\Models\Project;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -65,14 +66,47 @@ class ProjectController extends Controller
             'img_project' => $name,
         ]);
 
-        return redirect()->route('reward');
+        $pr = Project::where('slug', $slug)->first();
+        $id_pr = $pr->project_id;
+        Session::put('pr_id', $id_pr);
+        
+        return redirect()->route('reward')->with('project', $pr);
     }
 
-    public function addRewards()
+    public function rewardForm()
     {
+        $pr_id = Session::get('pr_id');
+        if(!$pr_id){
+            return redirect()->route('home');
+        }
+
+        $data = Project::where('project_id', $pr_id)->first();
         return view('/form/secondForm', [
-            'title' => 'Reward'
+            'title' => 'Reward',
+            'project' => $data
         ]);
+    }
+
+    public function addReward(Request $request)
+    {
+        $project_id = $request->project_id;
+        $reward_title = $request->reward_title;
+        $reward_desc = $request->description;
+        $reward_amount = $request->amount;
+
+        Reward::create([
+            'project_id' => $project_id,
+            'reward_title' => $reward_title,
+            'reward_desc' => $reward_desc,
+            'reward_amount' => $reward_amount
+        ]);
+        
+        return redirect()->route('reward', [
+            'title' => 'Reward',
+        ]);
+        // return view('/form/secondForm', [
+        //     'title' => 'Reward'
+        // ]);
     }
 
     public function detailProject($slug, Request $request)

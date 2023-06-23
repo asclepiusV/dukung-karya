@@ -31,7 +31,7 @@ Route::get('/', [ProjectController::class, 'index'])->name('home');
 
 Route::get('/lists', [ProjectController::class, 'listProject'])->name('lists');
 
-Route::get('/projects/{slug}', [ProjectController::class, 'detailProject']);
+Route::get('/projects/{slug}', [ProjectController::class, 'detailProject'])->name('detail');
 
 
 Route::get('/projects/{slug}/payment', [ProjectController::class, 'payment'])->middleware('auth');
@@ -40,7 +40,8 @@ Route::get('/start', [ProjectController::class, 'startProject'])->Middleware('au
 // Route::get('/start', [ProjectController::class, 'startProject']);
 Route::post('/upload', [ProjectController::class, 'createProject'])->Middleware('auth');
 
-Route::get('/reward', [ProjectController::class, 'addRewards'])->middleware('auth')->name('reward');
+Route::get('/reward', [ProjectController::class, 'rewardForm'])->middleware('auth')->name('reward');
+Route::post('/reward', [ProjectController::class, 'addReward'])->middleware('auth');
 // Route::post('/upload', [ProjectController::class, 'createProject']);
 
 // Route::get('/start/checkSlug', [ProjectController::class, 'checkSlug']);
