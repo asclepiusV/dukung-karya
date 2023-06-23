@@ -20,6 +20,10 @@
         .font{
             font-family:   Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
         }
+        
+        .navbar{
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
         .image {
             width: 100%;
             height: 200px;
@@ -29,6 +33,11 @@
         .img-blog{
             width: 100px;
             height: 100px;
+            object-fit:cover;
+        }
+        .img-logo{
+            width: 30px;
+            height: 30px;
             object-fit:cover;
         }
         .img-detail {
@@ -44,18 +53,12 @@
         }
         .justify-text {
             text-align: justify;
+            text-indent:1.5em;
         }
         .margin-top{
             margin-top: 60px;
         }
-        .indent-if-multiple-lines {
-            text-indent: 0; /* Menghapus inden awal secara default */
-            white-space: nowrap; /* Mencegah pemisahan kata */
-        }
-
-        .indent-if-multiple-lines::first-line {
-            text-indent: 1.5em; /* Inden jika ada lebih dari satu baris */
-        }
+        
         .bg-ungu{
             background-color: #6700CD;
         }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Models\Project;
+use App\Models\Reward;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -71,11 +72,12 @@ class ProjectController extends Controller
     {
         //REQUEST
         $data = Project::where('slug', $slug)->first();
-        $allData = Project::with('user')->get();
+        // $allData = Project::with('user')->get();
+        // $reward = Reward
         return view('campaign/detail', [
             "title" => "A Project",
             "project" => $data,
-            "allData" => $allData
+            // "allData" => $allData
         ]);
     }
 

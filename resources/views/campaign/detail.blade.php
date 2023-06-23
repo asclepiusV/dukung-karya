@@ -49,18 +49,18 @@
         <div>
           <h4 class="fst-italic">Contoh</h4>
           <ul class="list-unstyled">
-            @foreach($allData->take(5) as $item)
+            @foreach($project->rewards as $item)
             <li>
               <hr>
-              <h3 class="reward-title">Reward Level 1</h3>
-                <p class="reward-description">Description of Reward Level 1</p>
-                <p class="reward-price">Price: $10</p>
+              <h3 class="reward-title">{{ $item['reward_title'] }}</h3>
+                <p class="reward-description">{{ $item['reward_desc'] }}</p>
+                <p class="reward-price">Price: Rp.{{ $item['reward_amount'] }}</p>
                 <p class="reward-quantity">Available: 100</p>
                 <a href="#" class="btn btn-success reward-button" style="margin-bottom:10px;">Select Reward</a>
             </li>
             <li>
               <div class="img-blog">
-                <img src="{{asset('storage/images/'.$project['img_project']) }}" class="img-detail">
+                {{-- <img src="{{asset('storage/images/'.$project['img_project']) }}" class="img-detail"> --}}
               </div>
 
             </li>
@@ -118,4 +118,3 @@
 
 </main>
 @endsection
-
