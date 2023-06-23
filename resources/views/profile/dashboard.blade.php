@@ -4,6 +4,7 @@
 @section('container')
 
 <div class="container">
+    <div class="card">
 <table class="table table-hover">
     <thead>
         <tr>
@@ -47,6 +48,7 @@
         @endforeach
     </tbody>
 </table>
+</div>
 </div>
 
 
