@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Project extends Model
 {
@@ -37,9 +38,9 @@ class Project extends Model
         return $this->hasMany(Backer::class);
     }
 
-    public function rewards()
+    public function rewards() : HasMany
     {
-        return $this->hasMany(Reward::class);
+        return $this->hasMany(Reward::class, 'project_id', 'project_id');
     }
 
     public function sluggable(): array

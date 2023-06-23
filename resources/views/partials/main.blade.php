@@ -42,6 +42,20 @@
             width: 650px;
             height: 350px;
         }
+        .justify-text {
+            text-align: justify;
+        }
+        .margin-top{
+            margin-top: 60px;
+        }
+        .indent-if-multiple-lines {
+            text-indent: 0; /* Menghapus inden awal secara default */
+            white-space: nowrap; /* Mencegah pemisahan kata */
+        }
+
+        .indent-if-multiple-lines::first-line {
+            text-indent: 1.5em; /* Inden jika ada lebih dari satu baris */
+        }
         .bg-ungu{
             background-color: #6700CD;
         }
