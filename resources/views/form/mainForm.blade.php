@@ -40,7 +40,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Rp.</span>
                                 </div>
-                                <input type="number" class="form-control" id="projectGoal" name="projectGoal" placeholder="Masukkan target dana proyek Anda">
+                                <input type="text" class="form-control" id="projectGoal" name="projectGoal" placeholder="Masukkan target dana proyek Anda">
                             </div>
                         </div>
                         <div class="form-group">

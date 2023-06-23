@@ -16,61 +16,71 @@ class RewardsSeeder extends Seeder
         $rewards = [
             [
                 'project_id' => 4, 
-                'reward_title' => 'Reward Lv. 1', 
+                'reward_title' => 'Reward Lv 1', 
+                'slug' => 'reward-lv-1',
                 'reward_desc' => 'Kontributor akan mendapatkan barang berupa poster',
                 'reward_amount' => '100000'
             ],
             [
                 'project_id' => 4, 
-                'reward_title' => 'Reward Lv. 2', 
+                'reward_title' => 'Reward Lv 2', 
+                'slug' => 'reward-lv-2',
                 'reward_desc' => 'Kontributor akan mendapatkan barang berupa salinan dari game ini',
                 'reward_amount' => '200000'
             ],
             [
                 'project_id' => 4, 
-                'reward_title' => 'Reward Lv. 3', 
+                'reward_title' => 'Reward Lv 3', 
+                'slug' => 'reward-lv-3',
                 'reward_desc' => 'Kontributor akan mendapatkan barang berupa salinan dari game ini',
                 'reward_amount' => '300000'
             ],
             [
                 'project_id' => 4, 
-                'reward_title' => 'Reward Lv. 4', 
+                'reward_title' => 'Reward Lv 4', 
+                'slug' => 'reward-lv-4',
                 'reward_desc' => 'Kontributor akan mendapatkan barang berupa salinan dari game ini dan',
                 'reward_amount' => '500000'
             ],
             [
                 'project_id' => 3, 
-                'reward_title' => 'Reward Lv. 1', 
+                'reward_title' => 'Reward Lv 1',
+                'slug' => 'reward-lv-1',
                 'reward_desc' => 'Kontributor akan mendapatkan barang berupa poster',
                 'reward_amount' => '100000'
             ],
             [
                 'project_id' => 3, 
-                'reward_title' => 'Reward Lv. 2', 
+                'reward_title' => 'Reward Lv 2', 
+                'slug' => 'reward-lv-2',
                 'reward_desc' => 'Kontributor akan mendapatkan barang berupa poster dan sb',
                 'reward_amount' => '200000'
             ],
             [
                 'project_id' => 3, 
-                'reward_title' => 'Reward Lv. 3', 
+                'reward_title' => 'Reward Lv 3',
+                'slug' => 'reward-lv-3',
                 'reward_desc' => 'Kontributor akan mendapatkan barang berupa salinan dari game ini',
                 'reward_amount' => '300000'
             ],
             [
                 'project_id' => 3, 
-                'reward_title' => 'Reward Lv. 4', 
+                'reward_title' => 'Reward Lv 4',
+                'slug' => 'reward-lv-4',
                 'reward_desc' => 'Kontributor akan mendapatkan barang berupa salinan dari game ini dan',
                 'reward_amount' => '500000'
             ],
             [
                 'project_id' => 1, 
-                'reward_title' => 'Reward dasar', 
+                'reward_title' => 'Reward dasar',
+                'slug' => 'reward-dasar',
                 'reward_desc' => 'Kontributor akan mendapatkan barang berupa salinan dari game ini dan',
                 'reward_amount' => '500000'
             ],
             [
                 'project_id' => 2, 
-                'reward_title' => 'Base Reward', 
+                'reward_title' => 'Base Reward',
+                'slug' => 'base-reward',
                 'reward_desc' => 'Kontributor akan mendapatkan barang berupa salinan dari game ini dan',
                 'reward_amount' => '500000'
             ],

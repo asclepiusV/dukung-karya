@@ -12,24 +12,31 @@
                 <li class="nav-item">
                     <a class="nav-link {{ $title === "Home" ? 'active' : '' }}" href="/"><b>Home</b></a>
                 </li>
-                @if (auth()->user()->is_admin)
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <b>List Kategori Proyek 
-                        </b></a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                @if (auth()->user())
+                    @if (auth()->user()->is_admin)
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <b>List Kategori Proyek 
+                            </b></a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                            @foreach ($categories as $category)
-                                <a class="dropdown-item" href="/admin/get-projects-by-category/{{$category['slug']}}"><i class="bi bi-person" data-category-id="1"></i><b>{{$category['name']}}</b></a>
-                            @endforeach
-                        
-                    </div>
-                </li>
+                                @foreach ($categories as $category)
+                                    <a class="dropdown-item" href="/admin/get-projects-by-category/{{$category['slug']}}"><i class="bi bi-person" data-category-id="1"></i><b>{{$category['name']}}</b></a>
+                                @endforeach
+                            
+                        </div>
+                    </li>
+                    @else
+                    <li class="nav-item">
+                        <a class="nav-link {{ $title === "Lists" ? 'active' : '' }}" href="/lists"><b>List Proyek </b></a>
+                    </li>
+                    @endif
                 @else
                 <li class="nav-item">
                     <a class="nav-link {{ $title === "Lists" ? 'active' : '' }}" href="/lists"><b>List Proyek </b></a>
                 </li>
                 @endif
+                
                 @if (Auth::check()) 
                 <li class="nav-item">
                     <a class="nav-link {{ $title === "Start" ? 'active' : '' }}" href="/start"><b>Start a Project</b></a>

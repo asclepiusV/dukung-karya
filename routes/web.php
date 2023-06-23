@@ -37,12 +37,10 @@ Route::get('/projects/{slug}', [ProjectController::class, 'detailProject'])->nam
 Route::get('/projects/{slug}/payment', [ProjectController::class, 'payment'])->middleware('auth');
 
 Route::get('/start', [ProjectController::class, 'startProject'])->Middleware('auth');
-// Route::get('/start', [ProjectController::class, 'startProject']);
 Route::post('/upload', [ProjectController::class, 'createProject'])->Middleware('auth');
 
 Route::get('/reward', [ProjectController::class, 'rewardForm'])->middleware('auth')->name('reward');
 Route::post('/reward', [ProjectController::class, 'addReward'])->middleware('auth');
-// Route::post('/upload', [ProjectController::class, 'createProject']);
 
 // Route::get('/start/checkSlug', [ProjectController::class, 'checkSlug']);
 

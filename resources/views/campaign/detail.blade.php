@@ -18,7 +18,7 @@
       @endphp
 
       <article class="blog-post">
-        <h2>Detail Proyek {{$project['project_name']}}</h2>
+        <h2>Detail Proyek</h2>
         <p class="justify-text">{{$project['description']}}</p>
           <div>
             <img src="{{ asset('storage/images/'.$project['img_project']) }}" class="img-detail">
@@ -32,12 +32,14 @@
         </dl>
         @if(auth()->user())
           @if(auth()->user()->is_admin == 1)
-          <a href="/admin" type="button" class="btn btn-success btn-lg">Edit</a>
+            <a href="/admin" type="button" class="btn btn-success btn-lg">Edit</a>
+          @elseif(auth()->user()->user_id == $project["user_id"])
+          <a href="/projects/{{ $project["slug"]}}" type="button" class="btn btn-success btn-lg w-100">Edit Proyek</a>
           @else
-          <a href="/projects/{{ $project["slug"] }}/payment" type="button" class="btn btn-success btn-lg">Donasi</a>
+          <a href="/projects/{{ $project["slug"] }}/payment" type="button" class="btn btn-success btn-lg w-100">Donasi</a>
           @endif
         @else
-        <a href="/projects/{{ $project["slug"] }}/payment" type="button" class="btn btn-success btn-lg">Donasi</a>
+        <a href="/projects/{{ $project["slug"] }}/payment" type="button" class="btn btn-success btn-lg w-100">Donasi</a>
         @endif
       </article>
     </div>
@@ -54,6 +56,7 @@
         <!-- <p class="mb-4">Penjelasan singkat misal berikut adalah contoh proyek dari perusahaan yang sama </p> -->
 
         <div>
+          <hr>
           <h4>List Reward</h4>
           <ul class="list-unstyled">
             @foreach($project->rewards as $item)
