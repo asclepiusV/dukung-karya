@@ -29,11 +29,17 @@ class LoginController extends Controller
 
 
         if (Auth::attempt($credentials)) {
-            // $user_id = Auth::user()->user_id;
+            $user = Auth::user();
             // $request->session()->put('user_id', $user_id);
             $request->session()->regenerate();
 
-            return redirect()->intended('/');
+            if ($user->is_admin == 1) {
+                // Pengguna adalah admin, arahkan ke halaman admin
+                return redirect()->intended('/');
+            } else {
+                return redirect()->intended('/');
+            }
+
         } else {
             return redirect()->back()->with('error', 'Email atau password salah!');
         }
@@ -43,11 +49,11 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::logout();
- 
+
         request()->session()->invalidate();
-    
+
         request()->session()->regenerateToken();
-    
+
         return redirect('/');
     }
 }
