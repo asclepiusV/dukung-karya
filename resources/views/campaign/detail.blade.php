@@ -42,7 +42,7 @@
       </article>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-4 mb-4">
       <div class="position-sticky" style="top: 2rem;">
         <h4 class="">{{$project['project_name']}}</h4>
         <p>Target dana yang kami perlukan untuk membuat proyek ini Rp.{{$project['funding_goal']}}</p>
@@ -58,67 +58,19 @@
           <ul class="list-unstyled">
             @foreach($project->rewards as $item)
             <li>
-              <hr>
+              <div class="card project-card mb-3" style="overflow: hidden; width: 400px; max-heigth:50px; ">
+                <div class="card-body">
               <h3 class="reward-title">{{ $item['reward_title'] }}</h3>
-                <p class="reward-description">{{ $item['reward_desc'] }}</p>
+                <p class="reward-description" style="max-height: 100px; overflow: hidden;">{{ $item['reward_desc'] }}</p>
                 <p class="reward-price">Price: Rp.{{ $item['reward_amount'] }}</p>
                 <p class="reward-quantity">Available: 100</p>
-                <a href="#" class="btn btn-success reward-button" style="margin-bottom:10px;">Select Reward</a>
-            </li>
-            <li>
-              {{-- <div class="img-blog">
-                <img src="{{asset('storage/images/'.$project['img_project']) }}" class="img-detail">
-              </div> --}}
-
+                <a href="#" class="btn btn-success reward-button" style="margin-bottom:10px; width:100%;">Select Reward</a>
+              </div>
+              </div>
             </li>
             @endforeach
-            <!-- <li>
-              <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="#">
-                <svg class="bd-placeholder-img" width="100%" height="96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
-                <div class="col-lg-8">
-                  <h6 class="mb-0">This is another blog post title</h6>
-                  <small class="text-body-secondary">January 14, 2023</small>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="#">
-                <svg class="bd-placeholder-img" width="100%" height="96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
-                <div class="col-lg-8">
-                  <h6 class="mb-0">Longer blog post title: This one has multiple lines!</h6>
-                  <small class="text-body-secondary">January 13, 2023</small>
-                </div>
-              </a>
-            </li> -->
           </ul>
         </div>
-
-        {{-- <div class="p-4">
-          <h4 class="fst-italic">Archives</h4>
-          <ol class="list-unstyled mb-0">
-            <li><a href="#">March 2021</a></li>
-            <li><a href="#">February 2021</a></li>
-            <li><a href="#">January 2021</a></li>
-            <li><a href="#">December 2020</a></li>
-            <li><a href="#">November 2020</a></li>
-            <li><a href="#">October 2020</a></li>
-            <li><a href="#">September 2020</a></li>
-            <li><a href="#">August 2020</a></li>
-            <li><a href="#">July 2020</a></li>
-            <li><a href="#">June 2020</a></li>
-            <li><a href="#">May 2020</a></li>
-            <li><a href="#">April 2020</a></li>
-          </ol>
-        </div>
-
-        <div class="p-4">
-          <h4 class="fst-italic">Elsewhere</h4>
-          <ol class="list-unstyled">
-            <li><a href="#">GitHub</a></li>
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">Facebook</a></li>
-          </ol>
-        </div> --}}
       </div>
     </div>
   </div>
