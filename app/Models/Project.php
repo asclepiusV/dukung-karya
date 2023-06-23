@@ -21,6 +21,10 @@ class Project extends Model
         'project_id',
     ];
 
+    protected $casts = [
+        'reward_amount' => 'integer'
+    ];
+
     protected $primaryKey = 'project_id';
 
     public function category() : BelongsTo
@@ -51,10 +55,16 @@ class Project extends Model
             ]
         ];
     }
+   
 
     public function setTitleAttribute($value)
     {
         $this->attributes['project_name'] = $value;
         $this->attributes['slug'] = Str::slug($value);
+    }
+
+    public function reward()
+    {
+        return $this->hasMany('App\Models\Reward');
     }
 }
