@@ -174,18 +174,18 @@ class ProjectController extends Controller
          // Set 3DS transaction for credit card to true
          \Midtrans\Config::$is3ds = true;
  
-         $params = array(
-             'transaction_details' => array(
-                 'order_id' => rand(),
+        $params = array(
+            'transaction_details' => array(
+                'order_id' => rand(),
                  'gross_amount' => 10000,
              ),
              'customer_details' => array(
-                 'username' => $request->get('username'),
-                 'email' => $request->get('email'),
+                'username' => $request->get('username'),
+                'email' => $request->get('email'),
              ),
-         );
- 
-         $snapToken = \Midtrans\Snap::getSnapToken($params);
+        );
+
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
 
         return view('campaign/payment', [
             "title" => "Payment a Project",
