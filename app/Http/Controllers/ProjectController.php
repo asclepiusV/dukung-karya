@@ -65,7 +65,14 @@ class ProjectController extends Controller
             'img_project' => $name,
         ]);
 
-        return redirect()->route('home');
+        return redirect()->route('reward');
+    }
+
+    public function addRewards()
+    {
+        return view('/form/secondForm', [
+            'title' => 'Reward'
+        ]);
     }
 
     public function detailProject($slug, Request $request)

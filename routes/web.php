@@ -38,6 +38,8 @@ Route::get('/projects/{slug}/payment', [ProjectController::class, 'payment'])->m
 Route::get('/start', [ProjectController::class, 'startProject'])->Middleware('auth');
 // Route::get('/start', [ProjectController::class, 'startProject']);
 Route::post('/upload', [ProjectController::class, 'createProject'])->Middleware('auth');
+
+Route::get('/reward', [ProjectController::class, 'addRewards'])->middleware('auth')->name('reward');
 // Route::post('/upload', [ProjectController::class, 'createProject']);
 
 // Route::get('/start/checkSlug', [ProjectController::class, 'checkSlug']);

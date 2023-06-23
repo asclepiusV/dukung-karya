@@ -20,7 +20,8 @@ class ProjectsSeeder extends Seeder
                 'category_id' => '1',
                 'user_id' => '2',
                 'img_project' => 'karya1.jpeg',
-                'description' => 'Karya ini merupakan hasil buatan alam'
+                'description' => 'Karya ini merupakan hasil buatan alam',
+                'funding_goal' => '10.000.000'
             ],
             [
                 'project_name' => 'Karya Kedua',
@@ -28,7 +29,8 @@ class ProjectsSeeder extends Seeder
                 'category_id' => '1',
                 'user_id' => '3',
                 'img_project' => 'karya2.jpg',
-                'description' => 'Karya ini merupakan karya mistik'
+                'description' => 'Karya ini merupakan karya mistik',
+                'funding_goal' => '5.000.000'
             ],
             [
                 'project_name' => 'Musik Jazz',
@@ -36,7 +38,8 @@ class ProjectsSeeder extends Seeder
                 'category_id' => '5',
                 'user_id' => '4',
                 'img_project' => 'music1.jpg',
-                'description' => 'Musik ini merupakan musik jazz'
+                'description' => 'Musik ini merupakan musik jazz',
+                'funding_goal' => '15.000.000'
             ],
             [
                 'project_name' => 'Tools Up',
@@ -44,7 +47,8 @@ class ProjectsSeeder extends Seeder
                 'category_id' => '6',
                 'user_id' => '2',
                 'img_project' => 'toolsUp.jpg',
-                'description' => 'Game ini bernama Tools Up'
+                'description' => 'Game ini bernama Tools Up',
+                'funding_goal' => '30.000.000'
             ],
             [
                 'project_name' => 'Music Pop',
@@ -52,7 +56,8 @@ class ProjectsSeeder extends Seeder
                 'category_id' => '5',
                 'user_id' => '4',
                 'img_project' => 'music2.jpg',
-                'description' => 'Musik ini merupakan musik pop'
+                'description' => 'Musik ini merupakan musik pop',
+                'funding_goal' => '10.000.000'
             ],
             [
                 'project_name' => 'Walking Dead',
@@ -60,7 +65,8 @@ class ProjectsSeeder extends Seeder
                 'category_id' => '6',
                 'user_id' => '3',
                 'img_project' => 'walkingDead.jpg',
-                'description' => 'Game ini bernama Walking Dead'
+                'description' => 'Game ini bernama Walking Dead',
+                'funding_goal' => '50.000.000'
             ],
         ];
 

@@ -18,6 +18,7 @@ class UserSeeder extends Seeder
                 'username' => 'admin',
                 'email' => 'admin@gmail.com',
                 'password' => '1234',
+                'is_admin' => 1,
                 'fullname' => 'Admin Ganteng'
             ],
             [

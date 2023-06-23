@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-success">
     <div class="container">
         <a class="navbar-brand" href="/">
-            <img src="asset/image/Logo.png"alt="Logo" width="30" height="24" class="d-inline-block align-text-top img-logo">
+            <img src="{{ asset('storage/images/Logo.png') }}"alt="Logo" width="30" height="24" class="d-inline-block align-text-top img-logo">
             <b>Dukung Karya</b></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,7 +26,8 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#"><i class="bi bi-person"></i> <b>Profil</b></a>
                         @if (auth()->user()->is_admin == 1)
-                        <a class="dropdown-item" href="#"><i class="bi bi-person"></i> <b>Admin</b></a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#"><i class="bi bi-person"></i> <b>Admin Page</b></a>
                         @endif
                         <div class="dropdown-divider"></div>
                         <form action="/logout" method="post">
@@ -37,10 +38,10 @@
                 </li>
                 @else
                 <li class="nav-item">
-                    <a class="nav-link {{ $title === "Start" ? 'active' : '' }}" href="/login">Start a Project</a>
+                    <a class="nav-link {{ $title === "Start" ? 'active' : '' }}" href="/login"><b>Start a Project</b></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ $title === "Login" ? 'active' : '' }}" href="/login" class="nav-link"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+                    <a class="nav-link {{ $title === "Login" ? 'active' : '' }}" href="/login" class="nav-link"><i class="bi bi-box-arrow-in-right"></i> <b>Login</b></a>
                 </li>
                 {{-- <li class="nav-item">
                     <a class="nav-link {{ $title === "Register" ? 'active' : '' }}" href="/register">Register</a>

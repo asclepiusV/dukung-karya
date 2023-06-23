@@ -59,9 +59,7 @@
             margin-top: 60px;
         }
         
-        .bg-ungu{
-            background-color: #6700CD;
-        }
+        
         .footer-section {
             background-color: blue;
         }
@@ -239,11 +237,14 @@
                 font-size: 14px;
             }
         }
-
+        .bg-ungu{
+            background-color: #6700CD;
+            /* background-color: #FFE4B5; */
+        }
     </style>
 </head>
 <body>
-    @include ('partials.navbar')
+    @include('partials.navbar')
 
     @yield('container')
 

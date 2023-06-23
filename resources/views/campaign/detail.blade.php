@@ -1,16 +1,16 @@
 
-@extends ('partials.main')
+@extends('partials.main')
 
-@section ('container')
+@section('container')
 <main class="container margin-top">
   <div class="row g-5">
     <div class="col-md-8">
-      <h1 class="mb-5 display-4 fst-italic">{{$project['project_name']}}</h1>
+      <h1 class="mb-5 display-4 ">{{$project['project_name']}}</h1>
 
       <!-- <p class="lead my-3">{{$project['project_description']}}</p> -->
-      <h3 class="pb-4 mb-4 fst-italic border-bottom">
-        By: {{ $project->user->fullname }} <!-- ini nanti nama perusahaan atau kelompok -->
-      </h3>
+      <h4 class="pb-4 mb-4  border-bottom">
+        {{ $project->category->name }} | {{ $project->user->fullname }} <!-- ini nanti nama perusahaan atau kelompok -->
+      </h4>
 
       @php
       $tanggal = $project->user->created_at;
@@ -37,17 +37,17 @@
 
     <div class="col-md-4">
       <div class="position-sticky" style="top: 2rem;">
-        <h4 class="fst-italic">{{$project['project_name']}}</h4>
+        <h4 class="">{{$project['project_name']}}</h4>
         <p>Target dana yang kami perlukan untuk membuat proyek ini Rp.{{$project['funding_goal']}}</p>
         <h6>Donasi yang terkumpul saat ini:</h6>
         <div class="donation-progress"">
-            <div class="progress-bar bg-success rounded" style="background-size: 25% 100%;">RP.{{$project['funding_goal']}}</div>
+            <div class="progress-bar bg-success rounded" style="background-size: 25% 100%;">RP.{{$project['current_funding']}}</div>
         </div>
 
         <!-- <p class="mb-4">Penjelasan singkat misal berikut adalah contoh proyek dari perusahaan yang sama </p> -->
 
         <div>
-          <h4 class="fst-italic">Contoh</h4>
+          <h4 class="fst-italic">List Reward</h4>
           <ul class="list-unstyled">
             @foreach($project->rewards as $item)
             <li>
@@ -59,9 +59,9 @@
                 <a href="#" class="btn btn-success reward-button" style="margin-bottom:10px;">Select Reward</a>
             </li>
             <li>
-              <div class="img-blog">
-                {{-- <img src="{{asset('storage/images/'.$project['img_project']) }}" class="img-detail"> --}}
-              </div>
+              {{-- <div class="img-blog">
+                <img src="{{asset('storage/images/'.$project['img_project']) }}" class="img-detail">
+              </div> --}}
 
             </li>
             @endforeach

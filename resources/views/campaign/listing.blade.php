@@ -2,7 +2,7 @@
 
 @section('container')
     <div class="container">
-        <h1 class="mt-5 text-center">List Proyek</h1>
+        <h1 class="mt-5 mb-5 text-center">List Proyek</h1>
 
     @if(count($project))
         <!-- <div class="card mb-3">

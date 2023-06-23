@@ -21,7 +21,7 @@ return new class extends Migration
             $table->foreignId('category_id');
             $table->text('description')->nullable();
             $table->char('funding_goal', 30)->nullable();
-            $table->char('current_funding', 30)->nullable();
+            $table->integer('current_funding')->nullable()->default(0);
             $table->char('duration_fund')->nullable();
             $table->boolean('is_validated')->default(false);
             // $table->binary('img_project')->nullable();
