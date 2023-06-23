@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class AdminControl extends Controller
@@ -17,13 +18,30 @@ class AdminControl extends Controller
             return redirect()->route('home');
         }
         //Admin control untuk mengakses dashboard admin
-        $data = Project::where('is_validated', 0)->get();
-
+        // $data = Project::where('is_validated', 0)->get();
+        $data = Project::all();
+        $category = Category::all()->toArray();
         return view('profile.dashboard', [
             'title' => 'Admin Dashboard',
-            'project' => $data
+            'project' => $data,
+            'categories' => $category,
         ]);
     }
+
+    public function getProjectsByCategory(Request $request, $slug)
+    {
+        $category = Category::where('slug', $slug)->first();
+
+        $projects = $category->projects;
+        // $project = $projects->category->slug;
+        $categories = Category::all()->toArray();
+        return view('profile.dashboard', [
+            'title' => 'Admin Dashboard',
+            'project' => $projects,
+            'categories' => $categories,
+        ]);
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -64,6 +82,14 @@ class AdminControl extends Controller
         $project->save();
 
         return redirect()->back()->with('success', 'Proyek telah divalidasi');
+    }
+
+    public function hapus(Request $request, $slug)
+    {
+        $project = Project::where('slug', $slug)->first();
+        $project->delete();
+
+        return redirect()->back()->with('success', 'Proyek telah dihapus');
     }
 
     /**

@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('rewards', function (Blueprint $table) {
             $table->id('reward_id');
-            // $table->foreignId('project_id')->references('project_id')->on('projects');
-            $table->foreignId('project_id');
+            $table->foreignId('project_id')->references('project_id')->on('projects');
+            // $table->foreignId('project_id');
             $table->string('reward_title');
+            $table->string('slug');
             $table->text('reward_desc');
             $table->char('reward_amount', 30);
             $table->timestamps();

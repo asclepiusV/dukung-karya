@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Auth;
-use App\Models\Project;
 use App\Models\Reward;
+use App\Models\Project;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -24,17 +26,20 @@ class ProjectController extends Controller
         $image = public_path('projects-img_project.bin');
         $imageData = base64_encode(file_get_contents($image));
         // $src = 'data: ' . mime_content_type($image) . ';base64,' . $imageData;
-
+        $categories = Category::all();
         return View('welcome', [
             "project" => $data,
-            'title' => 'Home'
+            'title' => 'Home',
+            'categories' => $categories
         ]);
     }
 
     public function startProject()
     {
+        $categories = Category::all();
         return view('/form/mainForm', [
-            'title' => 'Start'
+            'title' => 'Start',
+            'categories' => $categories
         ]);
     }
 
@@ -65,14 +70,51 @@ class ProjectController extends Controller
             'img_project' => $name,
         ]);
 
-        return redirect()->route('reward');
+        $pr = Project::where('slug', $slug)->first();
+        $id_pr = $pr->project_id;
+        Session::put('pr_id', $id_pr);
+
+
+        return redirect()->route('reward')->with(['project' => $pr]);
     }
 
-    public function addRewards()
+    public function rewardForm()
     {
+        $pr_id = Session::get('pr_id');
+        if(!$pr_id){
+            return redirect()->route('home');
+        }
+
+        $categories = Category::all();
+
+        $data = Project::where('project_id', $pr_id)->first();
         return view('/form/secondForm', [
-            'title' => 'Reward'
+            'title' => 'Reward',
+            'project' => $data,
+            'categories' => $categories
         ]);
+    }
+
+    public function addReward(Request $request)
+    {
+        $project_id = $request->project_id;
+        $reward_title = $request->reward_title;
+        $reward_desc = $request->description;
+        $reward_amount = $request->amount;
+
+        Reward::create([
+            'project_id' => $project_id,
+            'reward_title' => $reward_title,
+            'reward_desc' => $reward_desc,
+            'reward_amount' => $reward_amount
+        ]);
+        
+        return redirect()->route('reward', [
+            'title' => 'Reward',
+        ]);
+        // return view('/form/secondForm', [
+        //     'title' => 'Reward'
+        // ]);
     }
 
     public function detailProject($slug, Request $request)
@@ -81,10 +123,13 @@ class ProjectController extends Controller
         $data = Project::where('slug', $slug)->first();
         // $allData = Project::with('user')->get();
         // $reward = Reward
+
+        $categories = Category::all();
         return view('campaign/detail', [
             "title" => "A Project",
             "project" => $data,
             // "allData" => $allData
+            'categories' => $categories
         ]);
     }
 
@@ -132,26 +177,26 @@ class ProjectController extends Controller
         //     }
         // }
          // Set your Merchant Server Key
-        //  \Midtrans\Config::$serverKey = 'SB-Mid-server-wOmHXMyBWxnlIaG9wnazncbR';
-        //  // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
-        //  \Midtrans\Config::$isProduction = false;
-        //  // Set sanitization on (default)
-        //  \Midtrans\Config::$isSanitized = true;
-        //  // Set 3DS transaction for credit card to true
-        //  \Midtrans\Config::$is3ds = true;
+         \Midtrans\Config::$serverKey = 'SB-Mid-server-wOmHXMyBWxnlIaG9wnazncbR';
+         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+         \Midtrans\Config::$isProduction = false;
+         // Set sanitization on (default)
+         \Midtrans\Config::$isSanitized = true;
+         // Set 3DS transaction for credit card to true
+         \Midtrans\Config::$is3ds = true;
  
-        //  $params = array(
-        //      'transaction_details' => array(
-        //          'order_id' => rand(),
-        //          'gross_amount' => $data->reward_amount
-        //      ),
-        //      'customer_details' => array(
-        //          'username' => $request->username,
-        //          'email' => $request->email,
-        //      ),
-        //  );
+         $params = array(
+             'transaction_details' => array(
+                 'order_id' => rand(),
+                 'gross_amount' => 10000,
+             ),
+             'customer_details' => array(
+                 'username' => $request->get('username'),
+                 'email' => $request->get('email'),
+             ),
+         );
  
-        //  $snapToken = \Midtrans\Snap::getSnapToken($params);
+         $snapToken = \Midtrans\Snap::getSnapToken($params);
 
         //  return view('campaign/payment', [
         //     "title" => "Payment a Project",
