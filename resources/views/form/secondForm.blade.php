@@ -1,7 +1,7 @@
 @extends('partials.main')
 
 @section('container')
-    <div class="container">
+    <div class="container" style="max-width: 700px;">
         <h1 class="mt-5 mb-5 text-center">Tambah Reward</h1>
 
         <form action="/reward" method="POST">
@@ -33,14 +33,20 @@
                 <p class="reward-price">Price: Rp.{{ $project['reward_amount'] }}</p>
                 <p class="reward-quantity">Available: 100</p>
                 <a href="#" class="btn btn-success reward-button" style="margin-bottom:10px;">Select Reward</a> --}}
+                <div class="d-flex flex-wrap">
         @foreach($project->rewards as $item)
-                <hr>
+                <div class="card project-card mt-3 mx-2" style="width: 200px; heigth:200px; overflow: hidden;  ">
+                    <div class="card-body">
                 <h3 class="reward-title">{{ $item['reward_title'] }}</h3>
-                <p class="reward-description">{{ $item['reward_desc'] }}</p>
+                <p class="reward-description" style="white-space: nowrap; text-overflow: ellipsis;">{{ $item['reward_desc'] }}</p>
                 <p class="reward-price">Price: Rp.{{ $item['reward_amount'] }}</p>
                 <p class="reward-quantity">Available: 100</p>
-                <a href="#" class="btn btn-success reward-button" style="margin-bottom:10px;">Select Reward</a>
+                <a href="#" class="btn btn-danger reward-button" style="margin-bottom:10px; width: 100%;">Hapus</a>
+            </div>
+            </div>
             @endforeach
+        </div>
         @endif
+        <a href="/" class="btn btn-success mt-5 mb-5">Home</a>
     </div>
 @endsection
