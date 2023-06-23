@@ -14,7 +14,7 @@ class Category extends Model
         'category_id',
     ];
 
-    public function project() : HasMany
+    public function projects() : HasMany
     {
         return $this->hasMany(Project::class, 'category_id', 'category_id');
     }

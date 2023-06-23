@@ -30,13 +30,15 @@ class AdminControl extends Controller
 
     public function getProjectsByCategory(Request $request, $slug)
     {
-        $projects = Project::all();
-        $project = $projects->category->slug;
-        $category = Category::all()->toArray();
+        $category = Category::where('slug', $slug)->first();
+
+        $projects = $category->projects;
+        // $project = $projects->category->slug;
+        $categories = Category::all()->toArray();
         return view('profile.dashboard', [
             'title' => 'Admin Dashboard',
-            'project' => $project,
-            'categories' => $category,
+            'project' => $projects,
+            'categories' => $categories,
         ]);
     }
 

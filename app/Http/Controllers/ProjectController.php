@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Auth;
 use App\Models\Reward;
 use App\Models\Project;
@@ -25,17 +26,20 @@ class ProjectController extends Controller
         $image = public_path('projects-img_project.bin');
         $imageData = base64_encode(file_get_contents($image));
         // $src = 'data: ' . mime_content_type($image) . ';base64,' . $imageData;
-
+        $categories = Category::all();
         return View('welcome', [
             "project" => $data,
-            'title' => 'Home'
+            'title' => 'Home',
+            'categories' => $categories
         ]);
     }
 
     public function startProject()
     {
+        $categories = Category::all();
         return view('/form/mainForm', [
-            'title' => 'Start'
+            'title' => 'Start',
+            'categories' => $categories
         ]);
     }
 
@@ -69,8 +73,9 @@ class ProjectController extends Controller
         $pr = Project::where('slug', $slug)->first();
         $id_pr = $pr->project_id;
         Session::put('pr_id', $id_pr);
-        
-        return redirect()->route('reward')->with('project', $pr);
+
+
+        return redirect()->route('reward')->with(['project' => $pr]);
     }
 
     public function rewardForm()
@@ -80,10 +85,13 @@ class ProjectController extends Controller
             return redirect()->route('home');
         }
 
+        $categories = Category::all();
+
         $data = Project::where('project_id', $pr_id)->first();
         return view('/form/secondForm', [
             'title' => 'Reward',
-            'project' => $data
+            'project' => $data,
+            'categories' => $categories
         ]);
     }
 
@@ -115,10 +123,13 @@ class ProjectController extends Controller
         $data = Project::where('slug', $slug)->first();
         // $allData = Project::with('user')->get();
         // $reward = Reward
+
+        $categories = Category::all();
         return view('campaign/detail', [
             "title" => "A Project",
             "project" => $data,
             // "allData" => $allData
+            'categories' => $categories
         ]);
     }
 
