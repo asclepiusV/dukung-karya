@@ -5,6 +5,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminControl;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +42,7 @@ Route::post('/upload', [ProjectController::class, 'createProject'])->Middleware(
 // Route::post('/upload', [ProjectController::class, 'createProject']);
 
 // Route::get('/start/checkSlug', [ProjectController::class, 'checkSlug']);
+
+//Route Admin
+Route::get('/admin', [AdminControl::class, 'index'])->middleware('auth');
+Route::get('/admin/validasi/{slug}', [AdminControl::class, 'validasi'])->middleware('auth');

@@ -12,8 +12,17 @@ class AdminControl extends Controller
      */
     public function index()
     {
-        //Admin control untuk mengakses dashboard admin
 
+        if (auth()->user()->is_admin == 0) {
+            return redirect()->route('home');
+        }
+        //Admin control untuk mengakses dashboard admin
+        $data = Project::where('is_validated', 0)->get();
+
+        return view('profile.dashboard', [
+            'title' => 'Admin Dashboard',
+            'project' => $data
+        ]);
     }
 
     /**
@@ -43,9 +52,18 @@ class AdminControl extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Project $project)
+    public function edit(Project $project, $slug)
     {
-        //
+        // $data = Project::();
+    }
+
+    public function validasi(Request $request, $slug)
+    {
+        $project = Project::where('slug', $slug)->first();
+        $project->is_validated = 1;
+        $project->save();
+
+        return redirect()->back()->with('success', 'Proyek telah divalidasi');
     }
 
     /**

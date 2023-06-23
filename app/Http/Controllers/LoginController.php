@@ -41,7 +41,7 @@ class LoginController extends Controller
             }
 
         } else {
-            return redirect()->back()->with('error', 'Email atau password salah!');
+            return redirect()->route('home')->with('error', 'Email atau password salah!');
         }
 
     }
