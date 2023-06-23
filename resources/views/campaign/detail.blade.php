@@ -5,7 +5,7 @@
 <main class="container margin-top">
   <div class="row g-5">
     <div class="col-md-8">
-      <h1 class="mb-5 display-4 ">{{$project['project_name']}}</h1>
+      <h1 id="top" class="mb-5 display-4 ">{{$project['project_name']}}</h1>
 
       <!-- <p class="lead my-3">{{$project['project_description']}}</p> -->
       <h4 class="pb-4 mb-4  border-bottom">
@@ -30,9 +30,10 @@
           <dt><!-- Ini nanti isian nilai project--></dt>
           <dd>Bakal dapat akun premium dll......</dd>
         </dl>
-        @if(auth()->user()->is_admin == 1)
-        <a href="/admin" type="button" class="btn btn-success btn-lg">Edit</a>
-        @else
+        @if(auth()->user())
+          @if(auth()->user()->is_admin == 1)
+          <a href="/admin" type="button" class="btn btn-success btn-lg">Edit</a>
+          @endif
         <a href="/projects/{{ $project["slug"] }}/payment" type="button" class="btn btn-success btn-lg">Donasi</a>
         @endif
       </article>
@@ -50,7 +51,7 @@
         <!-- <p class="mb-4">Penjelasan singkat misal berikut adalah contoh proyek dari perusahaan yang sama </p> -->
 
         <div>
-          <h4 class="fst-italic">List Reward</h4>
+          <h4>List Reward</h4>
           <ul class="list-unstyled">
             @foreach($project->rewards as $item)
             <li>
@@ -89,7 +90,7 @@
           </ul>
         </div>
 
-        <div class="p-4">
+        {{-- <div class="p-4">
           <h4 class="fst-italic">Archives</h4>
           <ol class="list-unstyled mb-0">
             <li><a href="#">March 2021</a></li>
@@ -114,7 +115,7 @@
             <li><a href="#">Twitter</a></li>
             <li><a href="#">Facebook</a></li>
           </ol>
-        </div>
+        </div> --}}
       </div>
     </div>
   </div>

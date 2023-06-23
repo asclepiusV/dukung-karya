@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dukung Karya | {{ $title }}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-wv+zmBzSFw2a+dAn2GQR7gR0F3/waJWZ5UkOZDhxvIH8v5aFnGjYOn9MT3xhJxK0Jb+yb7vlzTpYSry8XHDgFA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
@@ -241,13 +241,34 @@
             background-color: #6700CD;
             /* background-color: #FFE4B5; */
         }
+        #backToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            border: 1px solid white;
+            outline: none;
+            background-color: #198754;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 50%;
+        }
+
+        #backToTopBtn:hover {
+            background-color: #0c5633;
+        }
+
     </style>
 </head>
 <body>
     @include('partials.navbar')
 
     @yield('container')
+    <button onclick="smoothScrollToTop()" id="backToTopBtn" title="Back to Top"></button>
 
+    {{-- <button onclick="topFunction()" id="backToTopBtn" title="Back to Top"><i class="fa-solid fa-arrow-up"></i></button> --}}
     <section class="footer-section bg-success">
         <div class="container">
             <p>&copy; 2023 Dukung Karya. All rights reserved.</p>
@@ -281,6 +302,27 @@
                     }
             ]
             });
+        });
+    </script>
+    <script>
+        // Fungsi untuk melakukan scroll halaman dengan efek yang halus
+        function smoothScrollToTop() {
+            const scrollToTop = () => {
+            if (document.documentElement.scrollTop > 0) {
+            window.scrollBy(0, -30);
+            requestAnimationFrame(scrollToTop);
+            }
+        };
+        scrollToTop();
+        }
+
+        window.addEventListener('scroll', function() {
+            const backToTopBtn = document.getElementById('backToTopBtn');
+            if (window.pageYOffset > 20) {
+                backToTopBtn.style.display = 'block';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
         });
     </script>
 </body>

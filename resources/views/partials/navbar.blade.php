@@ -27,7 +27,7 @@
                         <a class="dropdown-item" href="#"><i class="bi bi-person"></i> <b>Profil</b></a>
                         @if (auth()->user()->is_admin == 1)
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#"><i class="bi bi-person"></i> <b>Admin Page</b></a>
+                        <a class="dropdown-item" href="/admin"><i class="bi bi-person"></i> <b>Admin Page</b></a>
                         @endif
                         <div class="dropdown-divider"></div>
                         <form action="/logout" method="post">
