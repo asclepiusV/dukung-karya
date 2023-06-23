@@ -1,7 +1,7 @@
     @extends('partials.main')
 
     @section('container')
-    <div class="container">
+    <div class="container" style="max-width:900px;">
         <div class="row justify-content-center mt-5">
             <div class="col-md-6">
                 <div class="card">
@@ -32,12 +32,12 @@
                                 <label for="password">Password</label>
                                 <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" required>
                             </div>
-                            <button type="submit" class="btn btn-primary w-100">Login</button>
+                            <button type="submit" class="btn btn-success w-100">Login</button>
                         </form>
         
                     </div>
+                    <small class="d-block text-center mt-2 mb-4">Belum Registrasi? <a href="register">Registrasi</a></small>
                 </div>
-                <small class="d-block text-center mt-3">Belum Registrasi? <a href="register">Registrasi</a></small>
             </div>
         </div>
     </div>

@@ -14,11 +14,12 @@ class RegisterController extends Controller
             'title' => 'Register | Dukung Karya',
             'active' => 'register'
         ]);
-    }   
+    }
 
     public function store(Request $request)
     {
         $validatedData = $request->validate([
+            'fullname' => 'required|max:50',
             'username' => 'required|max:32',
             'email' => 'required|email:dns|unique:users',
             'password' => 'required|min:3|max:32'
