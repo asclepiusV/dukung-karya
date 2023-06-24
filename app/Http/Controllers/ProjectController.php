@@ -198,12 +198,12 @@ class ProjectController extends Controller
  
          $snapToken = \Midtrans\Snap::getSnapToken($params);
 
-        //  return view('campaign/payment', [
-        //     "title" => "Payment a Project",
-        //     "project" => $data,
-        //     "snap_token" => $snapToken
-        // ]);
-        return dd(Project::where('slug', $slug)->with('rewards')->get('rewards_amount'));
+         return view('campaign/payment', [
+            "title" => "Payment a Project",
+            "project" => $data,
+            "snap_token" => $snapToken
+        ]);
+        // return dd(Project::where('slug', $slug)->with('rewards')->get('rewards_amount'));
         
     }
 
