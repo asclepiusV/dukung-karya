@@ -21,7 +21,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
                                 @foreach ($categories as $category)
-                                    <a class="dropdown-item" href="/admin/get-projects-by-category/{{$category['slug']}}"><i class="bi bi-person" data-category-id="1"></i><b>{{$category['name']}}</b></a>
+                                    <a class="dropdown-item" href="/admin/get-projects-by-category/{{$category['slug']}}"><b>{{$category['name']}}</b></a>
                                 @endforeach
                             
                         </div>
@@ -49,7 +49,7 @@
                         <a class="dropdown-item" href="/profile"><i class="bi bi-person"></i> <b>Profil</b></a>
                         @if (auth()->user()->is_admin == 1)
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/admin"><i class="bi bi-person"></i> <b>Admin Page</b></a>
+                        <a class="dropdown-item" href="/admin"><i class="bi bi-person-gear"></i> <b>Admin Page</b></a>
                         @endif
                         <div class="dropdown-divider"></div>
                         <form action="/logout" method="post">

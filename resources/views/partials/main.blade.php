@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/blog/">
     <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -23,7 +23,7 @@
     @include('partials.navbar')
 
     @yield('container')
-    <button onclick="smoothScrollToTop()" id="backToTopBtn" title="Back to Top"></button>
+    <button onclick="smoothScrollToTop()" id="backToTopBtn" title="Back to Top"><i class="bi bi-arrow-up"></i></button>
 
     {{-- <button onclick="topFunction()" id="backToTopBtn" title="Back to Top"><i class="fa-solid fa-arrow-up"></i></button> --}}
     <section class="footer-section bg-success">
