@@ -38,9 +38,7 @@
                 </form> --}}
             </td>
             <td>
-                <button class="btn btn-sm btn-danger">
-                    Hapus
-                </button>
+                <a href="/admin/delete/{{ $project["slug"] }}" class="btn btn-sm btn-danger">Hapus</a>
                 <a href="/projects/{{ $project["slug"] }}" class="btn btn-sm btn-success">Detail</a>
             </td>
         </tr>
