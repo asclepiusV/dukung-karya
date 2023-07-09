@@ -19,7 +19,7 @@ class AdminControl extends Controller
         }
         //Admin control untuk mengakses dashboard admin
         // $data = Project::where('is_validated', 0)->get();
-        $data = Project::all();
+        $data = Project::where('is_validated', 0)->get();
         $category = Category::all()->toArray();
         return view('profile.dashboard', [
             'title' => 'Admin Dashboard',

@@ -46,10 +46,10 @@
                         <b>Welcome, {{ auth()->user()->username }}
                         </b></a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/profile"><i class="bi bi-person"></i> <b>Profil</b></a>
                         @if (auth()->user()->is_admin == 1)
-                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/admin"><i class="bi bi-person-gear"></i> <b>Admin Page</b></a>
+                        @else
+                        <a class="dropdown-item" href="/profile"><i class="bi bi-person"></i> <b>Profil</b></a>
                         @endif
                         <div class="dropdown-divider"></div>
                         <form action="/logout" method="post">

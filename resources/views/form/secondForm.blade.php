@@ -22,9 +22,11 @@
                 <label for="amount">Minimal Donasi</label>
                 <input type="number" class="form-control" id="amount" name="amount" required>
             </div>
-
-            <button type="submit" class="btn btn-primary">Tambah Reward</button>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary w-50">Tambah Reward</button>
+            </div>
         </form>
+        <hr style="margin-top: 20px;">
 
         @if(Session::get('pr_id'))
         {{-- <hr>
@@ -33,23 +35,31 @@
                 <p class="reward-price">Price: Rp.{{ $project['reward_amount'] }}</p>
                 <p class="reward-quantity">Available: 100</p>
                 <a href="#" class="btn btn-success reward-button" style="margin-bottom:10px;">Select Reward</a> --}}
-                <div class="d-flex flex-wrap">
+        <div class="row">
+        @if($project->rewards->isEmpty())
+        <h5 class="text-center">Buat reward untuk pendukung proyek anda</h5>
+        @endif
         @foreach($project->rewards as $item)
-                <div class="card project-card mt-3 mx-2" style="width: 200px; heigth:200px; overflow: hidden;  ">
+            <div class="col-md-4">
+                <div class="card project-card mt-3 mx-2">
                     <div class="card-body">
-                <h3 class="reward-title">{{ $item['reward_title'] }}</h3>
-                <p class="reward-description" style="white-space: nowrap; text-overflow: ellipsis;">{{ $item['reward_desc'] }}</p>
-                <p class="reward-price">Price: Rp.{{ $item['reward_amount'] }}</p>
-                <p class="reward-quantity">Available: 100</p>
-                <form action="/reward/{{ $item['reward_id'] }}" method="POST">
-                    @csrf
-                    <button class="btn btn-danger reward-button" style="margin-bottom:10px; width: 100%;" onclick="return confirm('Hapus Reward Ini?')">Hapus</button>
-                </form>
-            </div>
+                        <h4 class="card-title">{{ $item['reward_title'] }}</h4>
+                        <p class="card-text">{{ $item['reward_desc'] }}</p>
+                        <p class="">Price: Rp.{{ $item['reward_amount'] }}</p>
+                        <p class="">Available: 100</p>
+                        <form action="/reward/{{ $item['reward_id'] }}" method="POST">
+                            @csrf
+                            <button class="btn btn-danger reward-button" style="margin-bottom:10px; width: 100%;" onclick="return confirm('Hapus Reward Ini?')">Hapus</button>
+                        </form>
+                    </div>
+                </div>
             </div>
             @endforeach
         </div>
         @endif
-        <a href="/" class="btn btn-success mt-5 mb-5">Home</a>
+        <hr style="margin-top: 20px;">
+        <div class="d-flex justify-content-center">
+            <a href="/projects/{{ $slug }}" class="btn btn-success mt-2 mb-5 w-100">Lihat Proyek</a>
+        </div>
     </div>
 @endsection

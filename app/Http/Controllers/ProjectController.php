@@ -74,6 +74,9 @@ class ProjectController extends Controller
         $id_pr = $pr->project_id;
         Session::put('pr_id', $id_pr);
 
+        $slug = $pr->slug;
+        session::put('slug', $slug);
+        // $request->flash('slug', $slug);
 
         return redirect()->route('reward')->with(['project' => $pr]);
     }
@@ -88,10 +91,12 @@ class ProjectController extends Controller
         $categories = Category::all();
 
         $data = Project::where('project_id', $pr_id)->first();
-        return view('/form/secondForm', [
+        $slug = session('slug');
+        return view('form/secondForm', [
             'title' => 'Reward',
             'project' => $data,
-            'categories' => $categories
+            'categories' => $categories,
+            'slug' => $slug
         ]);
     }
 
@@ -125,10 +130,10 @@ class ProjectController extends Controller
 
         $id_pr = $data->project_id;
         Session::put('pr_id', $id_pr);
-
         return view('/form/secondForm', [
             "title" => "Reward",
             "project" => $data,
+            'slug' => $data->slug
         ]);
     }
 
@@ -164,7 +169,7 @@ class ProjectController extends Controller
         // $projects = Project::skip($offset)->take($perPage)->get();
 
 
-        $data = Project::get()->toArray();
+        $data = Project::where('is_validated', 1)->get()->toArray();
         // $data = Project::paginate(6);
         // $chunks = $data->chunk(3);
         // $totalChunks = $chunks->count();
@@ -172,9 +177,12 @@ class ProjectController extends Controller
         // $currentIndex = $data->currentPage() - 1;
 
         // return view('lists.index', compact('chunks', 'totalChunks', 'showNextButton', 'currentIndex'));
+
+        $categories = Category::all();
         return view('campaign/listing', [
             "title" => "Lists",
             "project" => $data,
+            'categories' => $categories
             // "chunks" => $chunks,
             // "totalChunks" => $totalChunks,
             // "showNextButton" => $showNextButton,
@@ -182,11 +190,17 @@ class ProjectController extends Controller
         ]);
     }
 
-    // public function checkSlug(Request $request)
-    // {
-    //     $slug = SlugService::createSlug(Project::class, 'slug', $request->title);
-    //     return response()->json(['slug' => $slug]);
-    // }
+    public function listPerCategory($slug)
+    {
+        $category = Category::where('slug', $slug)->with('projects')->first();
+        $data = $category->projects()->where('is_validated', 1)->get();        
+        $categories = Category::all();
+        return view('campaign.listPerCategory', [
+            "title" => "List Per Category",
+            "project" => $data,
+            'categories' => $categories
+        ]);
+    }
 
     public function payment($slug, Request $request)
     {

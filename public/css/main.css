@@ -1,8 +1,13 @@
-.font{
-    font-family:   Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+* {
+    text-decoration: none;
+}
+.font {
+    font-family: Roboto, "Helvetica Neue", Arial, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
 }
 
-.navbar{
+.navbar {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 .image {
@@ -11,15 +16,15 @@
     object-fit: cover;
     object-position: 100% 8%;
 }
-.img-blog{
+.img-blog {
     width: 100px;
     height: 100px;
-    object-fit:cover;
+    object-fit: cover;
 }
-.img-logo{
+.img-logo {
     width: 30px;
     height: 30px;
-    object-fit:cover;
+    object-fit: cover;
 }
 .img-detail {
     max-width: 100%;
@@ -34,12 +39,11 @@
 }
 .justify-text {
     text-align: justify;
-    text-indent:1.5em;
+    text-indent: 1.5em;
 }
-.margin-top{
+.margin-top {
     margin-top: 60px;
 }
-
 
 .footer-section {
     background-color: blue;
@@ -119,8 +123,6 @@ body {
     z-index: 9999;
 } */
 
-
-
 .jumbotron {
     display: flex;
     align-items: center;
@@ -142,7 +144,7 @@ body {
     height: 100%;
     text-align: center;
 }
-    
+
 .display-4 {
     font-size: 48px;
 }
@@ -197,7 +199,6 @@ body {
     }
 }
 
-
 /* Responsive Styles */
 @media (max-width: 767px) {
     .slick-prev,
@@ -219,8 +220,8 @@ body {
         font-size: 14px;
     }
 }
-.bg-ungu{
-    background-color: #6700CD;
+.bg-ungu {
+    background-color: #6700cd;
     /* background-color: #FFE4B5; */
 }
 #backToTopBtn {
@@ -240,4 +241,19 @@ body {
 
 #backToTopBtn:hover {
     background-color: #0c5633;
+}
+.text-success {
+    text-decoration: none;
+}
+
+.table-list a::after {
+    content: "";
+    display: block;
+    padding-bottom: 0.5px;
+    border-bottom: 0.1rem solid #198754;
+    transform: scaleX(0);
+    transition: 0.2s linear;
+}
+.table-list a:hover::after {
+    transform: scaleX(0.4);
 }

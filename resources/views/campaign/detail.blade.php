@@ -4,6 +4,12 @@
 @section('container')
 <main class="container margin-top">
   <div class="row g-5">
+    @if( $project['is_validated'] === 0 )
+      <div class="alert alert-danger text-center">
+          Project Anda akan kami validasi segera
+      </div>
+    @endif                              
+                                
     <div class="col-md-8">
       <h1 id="top" class="mb-5 display-4 ">{{$project['project_name']}}</h1>
 
@@ -57,14 +63,14 @@
 
         <div>
           <hr>
-          <h4>List Reward</h4>
+          <h4 class="text-center">List Reward</h4>
           @if(auth()->user()->user_id == $project["user_id"])
-          <a href="/projects/{{ $project["slug"]}}/reward" type="button" class="btn btn-success btn-lg w-100">Edit Reward</a>
+          <a href="/projects/{{ $project["slug"]}}/reward" type="button" class="btn btn-success btn-lg w-100 mb-3">Edit Reward</a>
           @endif
           <ul class="list-unstyled">
             @foreach($project->rewards as $item)
             <li>
-              <div class="card project-card mb-3" style="overflow: hidden; width: 400px; max-heigth:50px; ">
+              <div class="card project-card mb-3" ">
                 <div class="card-body">
               <h3 class="reward-title">{{ $item['reward_title'] }}</h3>
                 <p class="reward-description" style="max-height: 100px; overflow: hidden;">{{ $item['reward_desc'] }}</p>
