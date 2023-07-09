@@ -87,8 +87,9 @@ class AdminControl extends Controller
     public function hapus(Request $request, $slug)
     {
         $project = Project::where('slug', $slug)->first();
-        $project->delete();
-
+        if ($project) {
+            $project->delete();
+        }
         return redirect()->back()->with('success', 'Proyek telah dihapus');
     }
 
