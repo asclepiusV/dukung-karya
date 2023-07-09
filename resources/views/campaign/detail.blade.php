@@ -58,6 +58,9 @@
         <div>
           <hr>
           <h4>List Reward</h4>
+          @if(auth()->user()->user_id == $project["user_id"])
+          <a href="/projects/{{ $project["slug"]}}/reward" type="button" class="btn btn-success btn-lg w-100">Edit Reward</a>
+          @endif
           <ul class="list-unstyled">
             @foreach($project->rewards as $item)
             <li>

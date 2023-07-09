@@ -20,14 +20,14 @@ class ProjectController extends Controller
 
     public function index()
     {
-        $data = Project::get()->toArray();
+        $data = Project::where('is_featured', true)->get()->toArray();
         // $data->img_project;
 
         $image = public_path('projects-img_project.bin');
         $imageData = base64_encode(file_get_contents($image));
         // $src = 'data: ' . mime_content_type($image) . ';base64,' . $imageData;
         $categories = Category::all();
-        return View('welcome', [
+        return view('welcome', [
             "project" => $data,
             'title' => 'Home',
             'categories' => $categories
@@ -117,6 +117,29 @@ class ProjectController extends Controller
         // ]);
     }
 
+    public function rewardProject($slug, Request $request)
+    {
+        $data = Project::where('slug', $slug)->first();
+        // $allData = Project::with('user')->get();
+        // $reward = Reward
+
+        $id_pr = $data->project_id;
+        Session::put('pr_id', $id_pr);
+
+        return view('/form/secondForm', [
+            "title" => "Reward",
+            "project" => $data,
+        ]);
+    }
+
+    public function deleteReward($id)
+    {
+        $reward = Reward::where('reward_id', $id);
+        $reward->delete();
+
+        return redirect()->route('reward');
+    }
+    
     public function detailProject($slug, Request $request)
     {
         //REQUEST

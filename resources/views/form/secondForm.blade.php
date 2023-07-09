@@ -41,7 +41,10 @@
                 <p class="reward-description" style="white-space: nowrap; text-overflow: ellipsis;">{{ $item['reward_desc'] }}</p>
                 <p class="reward-price">Price: Rp.{{ $item['reward_amount'] }}</p>
                 <p class="reward-quantity">Available: 100</p>
-                <a href="#" class="btn btn-danger reward-button" style="margin-bottom:10px; width: 100%;">Hapus</a>
+                <form action="/reward/{{ $item['reward_id'] }}" method="POST">
+                    @csrf
+                    <button class="btn btn-danger reward-button" style="margin-bottom:10px; width: 100%;" onclick="return confirm('Hapus Reward Ini?')">Hapus</button>
+                </form>
             </div>
             </div>
             @endforeach
