@@ -14,9 +14,8 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ $project['project_name'] }}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Amount to Donate</h6>
-                    <p class="card-text">$100</p>
-                    <h6 class="card-subtitle mb-2 text-muted">Informasi Pembayaran</h6>
-                    <form>
+                    <p class="card-text">Rp10,000.00</p>
+                    <!-- <h6 class="card-subtitle mb-2 text-muted">Informasi Pembayaran</h6>
                         <div class="form-group">
                             <label for="nameOnCard">Name on Card</label>
                             <input type="text" class="form-control" id="nameOnCard" placeholder="Enter name on card">
@@ -33,14 +32,13 @@
                             <div class="col">
                                 <label for="cvv">CVV</label>
                                 <input type="text" class="form-control" id="cvv" placeholder="CVV">
-                            </div>
+                            </div> -->
                         </div>
                         <div class="form-group mt-4">
-                            <button type="submit" class="btn btn-primary">Submit Payment</button>
-                            
+                        <button id="pay-button" class="btn btn-primary">Pay!</button>
+                        <a href="/projects/{{$project['slug']}}" class="btn btn-danger">Cancel</a>
                         </div>
-                    </form>
-                    <button id="pay-button">Pay!</button>
+                    
                             <script type="text/javascript">
 
                             // For example trigger on button clicked, or any time you need
@@ -69,9 +67,7 @@
                                         });
                                 // customer will be redirected after completing payment pop-up
                             });
-                            </script>
-                            <a href="/projects/{{$project['slug']}}" class="btn btn-danger">Cancel</a>
-                            <!-- <button type="button" class="btn btn-success">GoPay</button>
+                            </script>                            <!-- <button type="button" class="btn btn-success">GoPay</button>
                             <button type="button" class="btn btn-info">OVO</button>
                             <button type="button" class="btn btn-warning">Dana</button> -->
                 </div>

@@ -13,6 +13,10 @@ class Reward extends Model
     protected $guarded = [
         'reward_id',
     ];
+    
+    protected $casts = [
+        'reward_amount' => 'integer'
+    ];
 
     public function project() : BelongsTo
     {
