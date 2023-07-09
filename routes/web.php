@@ -6,6 +6,7 @@ use App\Http\Controllers\RegisterController;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminControl;
+use App\Http\Controllers\ProfilController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,7 @@ Route::post('/upload', [ProjectController::class, 'createProject'])->Middleware(
 
 Route::get('/reward', [ProjectController::class, 'rewardForm'])->middleware('auth')->name('reward');
 Route::post('/reward', [ProjectController::class, 'addReward'])->middleware('auth');
+Route::get('/reward/{slug}', [ProjectController::class, 'detailReward'])->middleware('auth');
 
 // Route::get('/start/checkSlug', [ProjectController::class, 'checkSlug']);
 
@@ -49,3 +51,7 @@ Route::get('/admin', [AdminControl::class, 'index'])->middleware('auth');
 Route::get('/admin/validasi/{slug}', [AdminControl::class, 'validasi'])->middleware('auth');
 
 Route::get('/admin/get-projects-by-category/{slug}', [AdminControl::class, 'getProjectsByCategory']);
+
+//profil
+Route::get('/profile', [ProfilController::class, 'index'])->middleware('auth');
+Route::get('/profile/delete/{slug}', [ProfilController::class, 'delete'])->middleware('auth');

@@ -46,7 +46,7 @@
                         <b>Welcome, {{ auth()->user()->username }}
                         </b></a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#"><i class="bi bi-person"></i> <b>Profil</b></a>
+                        <a class="dropdown-item" href="/profile"><i class="bi bi-person"></i> <b>Profil</b></a>
                         @if (auth()->user()->is_admin == 1)
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/admin"><i class="bi bi-person"></i> <b>Admin Page</b></a>
