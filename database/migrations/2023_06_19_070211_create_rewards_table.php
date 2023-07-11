@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->string('reward_title');
             $table->string('slug')->nullable();
             $table->text('reward_desc');
-            $table->char('reward_amount', 30);
+            $table->integer('reward_amount');
             $table->timestamps();
         });
     }

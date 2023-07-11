@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id('backer_id');
             $table->foreignId('project_id')->references('project_id')->on('projects');
             $table->foreignId('user_id')->references('user_id')->on('users');
-            $table->char('contribution_amount', 30);
+            $table->foreignId('reward_id')->references('reward_id')->on('rewards');
+            $table->integer('contribution_amount');
             $table->timestamp('contribution_date');
             $table->timestamps();
         });

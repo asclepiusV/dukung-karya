@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Backer;
 use App\Models\Category;
 use Auth;
 use App\Models\Reward;
@@ -148,16 +149,21 @@ class ProjectController extends Controller
     public function detailProject($slug, Request $request)
     {
         //REQUEST
-        $data = Project::where('slug', $slug)->first();
+        $data = Project::where('slug', $slug)->with('backers')->first();
+        $backers = $data->backers();
+        $sum = $backers->sum('contribution_amount');
         // $allData = Project::with('user')->get();
         // $reward = Reward
-
+        $persen = $sum / ($data->funding_goal) * 100;
+        $persen = number_format($persen, 2);
         $categories = Category::all();
         return view('campaign/detail', [
             "title" => "A Project",
             "project" => $data,
             // "allData" => $allData
-            'categories' => $categories
+            'categories' => $categories,
+            'total_donate' => $sum,
+            'persen' => $persen
         ]);
     }
 
@@ -202,10 +208,19 @@ class ProjectController extends Controller
         ]);
     }
 
-    public function payment($slug, Request $request)
+    public function payment($slug, $id, Request $request)
     {
         $data = Project::where('slug', $slug)->with('rewards')->first();
+        $reward = $data->rewards()->where('reward_id', $id)->first();
         $allData = Project::with('user')->get();
+        $id_user = auth()->user()->user_id;
+
+        Backer::create([
+            'project_id' => $data->project_id,
+            'user_id' => $id_user,
+            'reward_id' => $id,
+            'contribution_amount' => $reward['reward_amount'],
+        ]);
         // $new_project = [];
         // foreach ($allData as $item) {
         //     if ($item->slug === $slug) {
@@ -214,35 +229,34 @@ class ProjectController extends Controller
         //     }
         // }
          // Set your Merchant Server Key
-         \Midtrans\Config::$serverKey = 'SB-Mid-server-wOmHXMyBWxnlIaG9wnazncbR';
+        \Midtrans\Config::$serverKey = 'SB-Mid-server-wOmHXMyBWxnlIaG9wnazncbR';
          // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
-         \Midtrans\Config::$isProduction = false;
+        \Midtrans\Config::$isProduction = false;
          // Set sanitization on (default)
-         \Midtrans\Config::$isSanitized = true;
+        \Midtrans\Config::$isSanitized = true;
          // Set 3DS transaction for credit card to true
-         \Midtrans\Config::$is3ds = true;
- 
-         $params = array(
-             'transaction_details' => array(
-                 'order_id' => rand(),
-                 'gross_amount' => 10000,
-             ),
-             'customer_details' => array(
-                 'username' => $request->get('username'),
-                 'email' => $request->get('email'),
-             ),
-         );
- 
-         $snapToken = \Midtrans\Snap::getSnapToken($params);
+        \Midtrans\Config::$is3ds = true;
 
-         return view('campaign/payment', [
+        $params = array(
+            'transaction_details' => array(
+                'order_id' => rand(),
+                'gross_amount' => $reward['reward_amount'],
+            ),
+            'customer_details' => array(
+                'username' => $request->get('username'),
+                'email' => $request->get('email'),
+            ),
+        );
+
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+
+        return view('campaign/payment', [
             "title" => "Payment a Project",
             "project" => $data,
-            "snap_token" => $snapToken
+            "snap_token" => $snapToken,
+            "reward" => $reward
         ]);
         // return dd(Project::where('slug', $slug)->with('rewards')->get('rewards_amount'));
-        
     }
-
 
 }

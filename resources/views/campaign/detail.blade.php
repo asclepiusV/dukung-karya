@@ -41,11 +41,7 @@
             <a href="/admin" type="button" class="btn btn-success btn-lg">Edit</a>
           @elseif(auth()->user()->user_id == $project["user_id"])
           <a href="/projects/{{ $project["slug"]}}" type="button" class="btn btn-success btn-lg w-100">Edit Proyek</a>
-          @else
-          <a href="/projects/{{ $project["slug"] }}/payment" type="button" class="btn btn-success btn-lg w-100">Donasi</a>
           @endif
-        @else
-        <a href="/projects/{{ $project["slug"] }}/payment" type="button" class="btn btn-success btn-lg w-100">Donasi</a>
         @endif
       </article>
     </div>
@@ -54,10 +50,17 @@
       <div class="position-sticky" style="top: 2rem;">
         <h4 class="">{{$project['project_name']}}</h4>
         <p>Target dana yang kami perlukan untuk membuat proyek ini Rp.{{$project['funding_goal']}}</p>
-        <h6>Donasi yang terkumpul saat ini:</h6>
-        <div class="donation-progress"">
-            <div class="progress-bar bg-success rounded" style="background-size: 25% 100%;">RP.{{$project['current_funding']}}</div>
+        <h5>Donasi yang terkumpul saat ini:</h5>
+        <div class="progress-bar">
+          <div class="progress bg-success" style="width: {{ $persen }}%;">
+            <span class="progress-text">{{ $persen }}%</span>
+          </div>
         </div>
+        <h5 class="text-center">RP.{{ $total_donate }}</h5>
+        {{-- <h6 class="text-muted text-center">Dari Rp.{{$project['funding_goal']}}</h6> --}}
+        {{-- <div class="donation-progress"">
+            <div class="progress-bar bg-success rounded" style="background-size: 25% 100%;">RP.{{ $total_donate }}</div>
+        </div> --}}
 
         <!-- <p class="mb-4">Penjelasan singkat misal berikut adalah contoh proyek dari perusahaan yang sama </p> -->
 
@@ -76,7 +79,7 @@
                 <p class="reward-description" style="max-height: 100px; overflow: hidden;">{{ $item['reward_desc'] }}</p>
                 <p class="reward-price">Price: Rp.{{ $item['reward_amount'] }}</p>
                 <p class="reward-quantity">Available: 100</p>
-                <a href="#" class="btn btn-success reward-button" style="margin-bottom:10px; width:100%;">Select Reward</a>
+                <a href="/projects/{{ $project['slug'] }}/payment/{{ $item['reward_id'] }}" class="btn btn-success reward-button" style="margin-bottom:10px; width:100%;">Select Reward</a>
               </div>
               </div>
             </li>

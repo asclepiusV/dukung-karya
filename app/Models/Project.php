@@ -37,9 +37,9 @@ class Project extends Model
         return $this->belongsTo(User::class, 'user_id', 'user_id');
     }
 
-    public function backers()
+    public function backers() : HasMany
     {
-        return $this->hasMany(Backer::class);
+        return $this->hasMany(Backer::class, 'project_id', 'project_id');
     }
 
     public function rewards() : HasMany

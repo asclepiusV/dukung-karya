@@ -20,7 +20,7 @@ return new class extends Migration
             // $table->foreignId('user_id');
             // $table->foreignId('category_id');
             $table->text('description')->nullable();
-            $table->char('funding_goal', 30)->nullable();
+            $table->integer('funding_goal')->nullable();
             $table->integer('current_funding')->nullable()->default(0);
             $table->char('duration_fund')->nullable();
             $table->boolean('is_validated')->default(false);

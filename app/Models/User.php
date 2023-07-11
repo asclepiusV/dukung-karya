@@ -58,7 +58,7 @@ class User extends Authenticatable
 
     public function backers()
     {
-        return $this->hasMany(Backer::class);
+        return $this->hasMany(Backer::class, 'user_id', 'user_id');
     }
 
     /**

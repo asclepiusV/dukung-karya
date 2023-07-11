@@ -33,11 +33,12 @@ Route::get('/', [ProjectController::class, 'index'])->name('home');
 Route::get('/lists', [ProjectController::class, 'listProject'])->name('lists');
 Route::get('/lists/{slug}', [ProjectController::class, 'listPerCategory']);
 
-Route::get('/projects/{slug}', [ProjectController::class, 'detailProject'])->name('detail');
+Route::get('/projects/{slug}', [ProjectController::class, 'detailProject'])->middleware('auth')->name('detail');
 Route::get('/projects/{slug}/reward', [ProjectController::class, 'rewardProject']);
 
 
-Route::get('/projects/{slug}/payment', [ProjectController::class, 'payment'])->middleware('auth');
+// Route::get('/projects/{slug}/payment', [ProjectController::class, 'payment'])->middleware('auth');
+Route::get('/projects/{slug}/payment/{id}', [ProjectController::class, 'payment'])->middleware('auth');
 
 Route::get('/start', [ProjectController::class, 'startProject'])->Middleware('auth');
 Route::post('/upload', [ProjectController::class, 'createProject'])->Middleware('auth');

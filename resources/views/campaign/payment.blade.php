@@ -12,9 +12,9 @@
         
             <div class="card mt-4">
                 <div class="card-body">
-                    <h5 class="card-title">{{ $project['project_name'] }}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Amount to Donate</h6>
-                    <p class="card-text">Rp10,000.00</p>
+                    <h3 class="card-title">{{ $reward['reward_title'] }}</h3>
+                    <p class="card-text mb-2 mt-3">{{ $reward['reward_desc'] }}</p>
+                    <p class="card-text">Jumlah yang harus dibayarkan: <span class="p-1 bg-success r2 text-white">Rp.{{ $reward['reward_amount'] }}</span></p>
                     <!-- <h6 class="card-subtitle mb-2 text-muted">Informasi Pembayaran</h6>
                         <div class="form-group">
                             <label for="nameOnCard">Name on Card</label>
@@ -34,9 +34,9 @@
                                 <input type="text" class="form-control" id="cvv" placeholder="CVV">
                             </div> -->
                         </div>
-                        <div class="form-group mt-4">
-                        <button id="pay-button" class="btn btn-primary">Pay!</button>
-                        <a href="/projects/{{$project['slug']}}" class="btn btn-danger">Cancel</a>
+                        <div class="form-group mt-4 ms-3">
+                        <button id="pay-button" class="btn btn-primary w-20">Pay!</button>
+                        <a href="/projects/{{$project['slug']}}" class="btn btn-danger w-20">Cancel</a>
                         </div>
                     
                             <script type="text/javascript">

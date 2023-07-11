@@ -3,25 +3,19 @@
 @section('container')
     <div class="container">
         <h1 class="mt-5 mb-5 text-center">List Proyek</h1>
-        <table class="table table-striped table-bordered mb-5">
-    <thead class="bg-success text-white">
-        <tr>
-            <tr>
-                <th colspan="7" class="text-white text-center">
-                    <a href="/lists" style="text-decoration: none;" class="text-white">Semua Proyek</a>
+        <table class="table mb-5">
+            <thead>
+              <tr>
+                @foreach($categories as $category)
+                <th scope="col" class="text-center table-list">
+                    <a href="/lists/{{ $category['slug'] }}" style="text-decoration: none;" class="text-success">{{ $category['name'] }}</a>
                 </th>
-            </tr>
-            @foreach($categories as $category)
-            <th scope="col" class="text-center">
-                <a href="/lists/{{ $category['slug'] }}" style="text-decoration: none;" class="text-white">{{ $category['name'] }}</a>
-            </th>
-            @endforeach
-        </tr>
-    </thead>
-    <tbody>
-        <!-- Isi tabel -->
-    </tbody>
-</table>
+                @endforeach
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
 
 
     @if(count($project))
