@@ -156,6 +156,9 @@ class ProjectController extends Controller
         // $reward = Reward
         $persen = $sum / ($data->funding_goal) * 100;
         $persen = number_format($persen, 2);
+        
+        $total = $backers->count();
+
         $categories = Category::all();
         return view('campaign/detail', [
             "title" => "A Project",
@@ -163,7 +166,8 @@ class ProjectController extends Controller
             // "allData" => $allData
             'categories' => $categories,
             'total_donate' => $sum,
-            'persen' => $persen
+            'persen' => $persen,
+            'backer' => $total
         ]);
     }
 

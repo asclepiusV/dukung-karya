@@ -50,6 +50,7 @@
       <div class="position-sticky" style="top: 2rem;">
         <h4 class="">{{$project['project_name']}}</h4>
         <p>Target dana yang kami perlukan untuk membuat proyek ini Rp.{{$project['funding_goal']}}</p>
+        <h5 class="mb-4 fs-2">{{ $backer }}<span class="text-muted fs-6"> Dukungan</span></h5>
         <h5>Donasi yang terkumpul saat ini:</h5>
         <div class="progress-bar">
           <div class="progress bg-success" style="width: {{ $persen }}%;">
@@ -78,7 +79,7 @@
               <h3 class="reward-title">{{ $item['reward_title'] }}</h3>
                 <p class="reward-description" style="max-height: 100px; overflow: hidden;">{{ $item['reward_desc'] }}</p>
                 <p class="reward-price">Price: Rp.{{ $item['reward_amount'] }}</p>
-                <p class="reward-quantity">Available: 100</p>
+                <p class="reward-quantity">{{ $item->backers()->count() }}x didukung</p>
                 <a href="/projects/{{ $project['slug'] }}/payment/{{ $item['reward_id'] }}" class="btn btn-success reward-button" style="margin-bottom:10px; width:100%;">Select Reward</a>
               </div>
               </div>
